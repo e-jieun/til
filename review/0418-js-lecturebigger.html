@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div>
+      <h1 id="main-text">hello world</h1>
+      <button id="click-button">Click!</button>
+    </div>
+  </div>
+  <script>
+    // !아이디 요소가 아니라서 못 불러옴
+    // const body = document.getElementById('body');
+    // !선택자로는 불러올 수 있음
+    let body = document.querySelector('body');
+    console.log(body);
+    console.dir(body);
+    body.style.margin = '0px';
+    body.style.padding = '0px';
+
+    const root = document.getElementById('root');
+    let color_c4 = '#c4c4c4';
+    let hundred = 100;
+    let center = 'center';
+    console.log(root);
+    console.dir(root);
+    root.style.backgroundColor = color_c4;
+    root.style.width = hundred+'vw'; 
+    root.style.height = hundred+'vh';
+    root.style.display = 'flex';
+    root.style.alignItems = center;
+    root.style.justifyContent = center;
+
+    const mainText = document.getElementById('main-text');
+    const clickButton = document.getElementById('click-button');
+    let fontValue = 1;
+    let fontUnit = 'rem';
+    mainText.style.fontSize = fontValue+fontUnit;
+
+    // 이벤트를 등록하는데 가장 권장하는 방식
+    // 여러개의 이벤트를 등록할 수 있는 핸들러다
+    // addEventListener라는 객체(메서드)를 호출해줌
+    // ie8 이하에서는 attachEvent를 사용해야한다고 한다
+    clickButton.addEventListener('click', function(){
+      // fontValue = fontValue+0.1;
+      fontValue += .1;
+      mainText.style.fontSize = fontValue+fontUnit;
+    })
+
+  </script>
+</body>
+</html>
