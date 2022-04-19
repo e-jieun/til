@@ -18,9 +18,9 @@ function sickBe(a, b, c) {
   // 빵공장에서 밀가루를 넣으면 빵이 만들어진다
   // 밀가루가 없으면 참조 에러가 뜬다
   let sohi = 'mansoos elder sister';
-  
 }
 
 // console.log(sickBe(lunch, gansick, dinner))
+// reference error: 참조하는데 참조할 것이 없어 뜨는 에러(스크랩하는 걸 불러와줘 했는데 스크랩 해놓은 것이 없는 느낌)
 console.log(sohi);
 
