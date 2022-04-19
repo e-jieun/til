@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">hello</div>
+  <script>
+    // 문서 내 일치하는 첫번째 선택자를 반환해준다
+    let body = document.querySelector('body');
+    let root = document.querySelector('#root');
+    let heightValue = 100;
+    let heightUnit = 'vh';
+    let fontValue = 2;
+    let fontUnit = 'rem';
+    let darkGray = '#262626';
+    let white = '#fff';
+
+    console.dir(root);
+
+    root.style.height = heightValue+heightUnit;
+    root.style.fontSize = fontValue+fontUnit;
+    root.style.backgroundColor = darkGray;
+    root.style.color = white;
+    
+    // 와아 margin, padding 없앴다!
+    console.dir(body);
+
+    body.style.margin = '0';
+    body.style.padding = '0';
+  </script>
+</body>
+</html>

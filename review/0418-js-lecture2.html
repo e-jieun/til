@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">hello</div>
+  <script>
+    // 변수 root는 문서에서 아이디 'root(변수값)' 요소를 가져와라
+    let root = document.getElementById('root');
+    // 콘솔에서 root(변수명) 디렉토리를 나타내라
+    // 변수명 red에 변수값 'red'를 대입해줘라
+    // =은 대입연산자(오른쪽의 변수값을 왼쪽의 변수명에 대입해준다)
+    // 변수 이름은 값을 가리킨다
+    let red = 'red';
+    console.dir(root);
+    // root의 style에 보면 backgroundColor값이 있음
+    // 거기에 변수값 'red'를 할당함
+    root.style.backgroundColor = red;
+  </script>
+</body>
+</html>

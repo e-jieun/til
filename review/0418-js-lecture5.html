@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let persona ={
+      name: ['leedarim', 'yuhyeonjin'],
+      main_service: 'virtual experience',
+      age: ['teenager', '20s dakku', '30s tablet users'],
+      gender: 'female',
+      nation: 'korean',
+      hobby: ['diary', 'music', 'idol', 'movie', 'character'],
+      mood: ['scrap', 'adorable', 'highteen', 'neutral', 'sketch']
+    }
+    // !!!!객체는 .을 찍고 호출할 것
+    // .은 객체다
+    // !배열 순서 0부터
+    console.log('persona 1: '+persona.name[0]+' '+persona.age[0]+' '+persona.gender+' '+persona.nation+' '+persona.hobby[2]+' '+persona.mood[1]+', '+persona.mood[2]);
+    console.log('persona 2: '+persona.name[1]+' '+persona.age[2]+' '+persona.gender+' '+persona.nation+' '+persona.hobby[0]+', '+persona.hobby[3]+', '+persona.hobby[persona.hobby.length-1]+' '+persona.age[1]+', '+persona.age[persona.age.length-1])
+  </script>
+</body>
+</html>

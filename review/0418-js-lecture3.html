@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    let body = document.querySelector('body');
+
+    console.log(body);
+    console.dir(body);
+
+    body.style.margin = '0';
+    body.style.padding = '0';
+
+    const root = document.querySelector('#root');
+    
+    // 한 줄 쓰고 console.log();로 콘솔에 기록을 한다, 확인하는 작업 => 한줄, 한개, 완전히 눈에 다 들어올 때까지
+    // 순서를 차근차근 = 하나쓰고 하나보고
+
+    // 기록을 볼래
+    console.log(root);
+    // 구조를 볼래
+    console.dir(root);
+
+    // 변수를 초기화(시작)했다 => initialize(변수 선언, 초기 설정)
+    let hundred = 100;
+    let vh = 'vh';
+    let vw = 'vw';
+    let color_lg = '#ccc';
+
+    // console.log()를 들여다보면 style 속성에 width 속성 찾을 수 있음
+    // 문자열 '100vw'로 적어야 값이 할당됨
+    // 동적인 문서를 위해 js를 사용하는 것
+
+    root.style.width = hundred+vw;
+    root.style.height = hundred+vh;
+    root.style.backgroundColor = color_lg;
+  </script>
+</body>
+</html>
