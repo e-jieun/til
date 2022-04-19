@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">hello</div>
+  <script>
+    // selector방식으로 가져와줘, css처럼 가져와줘
+    // let이라는 약속어가 있다
+    let root = document.querySelector('#root');
+    let heightValue = 100;
+    let heightUnit = 'vh';
+    let fontSizeValue = 2;
+    let fontSizeUnit = 'rem';
+    let blue = 'blue';
+    let white = '#fff';
+    // let
+
+    // console.dir을 잘 사용하기
+    // root를 찾아라
+    console.dir(root);
+    // 
+    root.style.height = heightValue+heightUnit;
+    root.style.backgroundColor = blue;
+    // color값도 ''안에 사용
+    root.style.color = white;
+    root.style.fontSize = fontSizeValue+fontSizeUnit;
+    // 
+  </script>
+</body>
+</html>

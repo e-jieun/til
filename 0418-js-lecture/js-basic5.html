@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // 배열은 순서가 중요하고, 객체는 성격이 중요하다
+
+    // 값의 꾸러미 중에 순서가 중요한 것 => 배열(array)
+    // 일련의 목록, 같은 성격의
+    
+    // 값의 꾸러미 중에 갖가지 내용이 중요한 것 => 객체(object)
+    // 같은 것에 다른 내용들을 묶는데 편할 것, 로그인, 회원가입
+    // brace->{}
+    // key: value;로 구성되어있다 => property(props): 객체는 프로퍼티의 묶음이다
+    // 마지막은 쉼표를 안 쓴다 
+
+    // 하나의 변수에 여러가지 정보를 담음
+    // => 객체(object)
+    // let suim = {
+    //   name: 'jungsuim',
+    //   age: '20',
+    //   gender: 'female',
+    //   hobby: 'golf'
+    // }
+
+    let e_jieun ={
+      name: 'leejieun',
+      age: 28,
+      address: 'daejeon',
+      hobby: ['movie', 'music', 'baking'],
+      gender: 'female',
+      hairLength: 'middle',
+      family: ['mom', 'dad', 'sister1', 'sister2'],
+      height: '170cm'
+      // 마지막엔 , 안 붙임
+    }
+
+    // 객체는 .을 찍고 호출해야함 => .은 객체다
+    console.log(e_jieun.age);
+    console.log(e_jieun.hobby[0]);
+
+  </script>
+</body>
+</html>
