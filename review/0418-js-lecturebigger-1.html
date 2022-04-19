@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div>
+      <!-- bigger div -->
+      <div id = "bigger-square"></div>
+    </div>
+  </div>
+  <script>
+    let body = document.querySelector('body');
+    console.dir(body);
+    body.style.margin = 0;
+    body.style.padding = 0;
+
+    let root = document.getElementById('root');
+    // console 창에서 directory를 보여줌
+    console.dir(root);
+    let color_c4 = '#c4c4c4';
+    let hun = 100;
+    let heightUnit = 'vh';
+    let widthUnit = 'vw';
+    let white = '#fff';
+    let center = 'center';
+    // !크기 지정해주지 않아서 bgc가 입혀지지 않았던 것
+    root.style.width = hun+widthUnit;
+    root.style.height = hun+heightUnit;
+    root.style.backgroundColor = color_c4;
+    root.style.display = 'flex';
+    root.style.alignItems = center;
+    root.style.justifyContent = center;
+
+    const biggerSquare = document.getElementById('bigger-square');
+    console.dir(biggerSquare);
+    let value = 10;
+    biggerSquare.style.width = value+widthUnit;
+    biggerSquare.style.height = value+widthUnit;
+    biggerSquare.style.backgroundColor = white;
+
+    biggerSquare.addEventListener('click', function(){
+      value += 1;
+      biggerSquare.style.width = value+widthUnit;
+      biggerSquare.style.height = value+widthUnit;
+    })
+
+    </script>
+</body>
+</html>
