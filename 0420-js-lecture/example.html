@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="title">hello</h1>
+
+  <script>
+    // js 문서에 아이디 값 하나 가져오고 싶다, !아이디 값 이름은 !string title이야
+    // 발견하면 변수에 지정해준다, 변수명은 a다
+    let a = document.getElementById('title');
+    console.log(a);
+    // getter: get이라는 단어는 !무언가 가져와!
+    // getElementById()(===요소에 있는 id 속성의 무언가)
+    // => DOM API(코어 함수, 내장함수(=== 이미 만들어진 함수, built-in function))
+
+    // style에 보면 key: value; === property
+    // 변수 a가 가리키는 구조를 보여줘
+    console.dir(a);
+
+    // style 키 값을 알려줘
+    console.log(a.style);
+    // => 실행하면 css style declaration이 나온다 이것이 우리가 쓰던 css
+    // !!!!console을 보지 않으면 js 못하는 것
+    
+    // 브라우저의 기본값
+    // 브라우저의 내장 if(값이 없으면){
+    //  글씨를 검은색으로 해(참 조건이 붙어있는 것)
+    // }
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+    // 변수 선언 = 선언은 문자열 red다(red가 색이 아니라 스트링으로 인식해서 작동)
+    let colorValue = 'red';
+
+    a.style.color = colorValue;
+
+    // 효과는 이벤트(event) 핸들러만 여기 적용하면 된다
+    if(a.style.color === 'red'){
+      a.style.color = 'rgba(158,158,158,.3)';
+    }
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+    // 장준형의 가방(html tag) 속에 무엇이 들었는지 모르지만, 
+    // 지퍼를 열어서 지갑이 있는지 확인하고
+    // 지갑이 있으니까 그것으로 랍스터(value를 대입했다)를 사먹었다
+
+    // === 웹디자이너가 하고있는 사용자와의 소통 = 인터랙션
+    // 사용자가 암묵적으로 쓰고 있는 행동들
+    // event === 키보드, 음성, 마우스, 터치, 알람, 기타 등등(무슨 일이 일어났다)
+
+    // 제어의 관점
+
+    // dev tool console 적극 활용
+    // 공유폴더 pdf 체크
+</script>
+</body>
+</html>
