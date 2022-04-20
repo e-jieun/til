@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div id="con">
+      <div id="item">
+        2
+      </div>
+    </div>
+  </div>
+  <!-- script -->
+  <script>
+    // ---------------body--------------------
+    let body = document.querySelector('body');
+    // body의 디렉토리 구조를 보여줘
+    console.dir(body);
+    // body의 style key: value;를 알려줘
+    console.log(body.style);
+    // body variable declaration
+    let zero = 0;
+    let color_c4 = '#c4c4c4';
+    // body style
+    body.style.margin = zero;
+    body.style.padding = zero;
+    body.style.backgroundColor = color_c4;
+  
+    // ---------------#root--------------------
+    // 아이디 string root 요소를 가져와줘
+    const root = document.getElementById('root');
+    // #root의 디렉토리 구조를 보여줘
+    console.dir(root);
+    // #root의 style key: value;를 알려줘
+    console.log(root.style);
+    // #root variable declaration
+    // width단위 변수 선언
+    let widthUnit = 'vw';
+    // height단위 변수 선언
+    let heightUnit = 'vh';
+    let hun = 100;
+    let valueCenter = 'center';
+    // #root style
+    root.style.width = hun+widthUnit;
+    root.style.height = hun+heightUnit;
+    root.style.display = 'flex';
+    root.style.alignItems = valueCenter;
+    root.style.justifyContent = valueCenter;
+    // width: 100vw;이 참이면 bgc를 string #262626으로 돌려줘
+    if(root.style.width === '100vw'){
+      root.style.backgroundColor = '#262626';
+    } else{
+      root.style.backgroundcolor = color_c4;
+    }
+    // align-items: center;이 참이면 color를 string #fff로 돌려줘
+    if(root.style.alignItems === valueCenter){
+      root.style.color = 'pink';
+    } else{
+      // align-items: center;이 거짓이면 color을 null값인 black으로 돌려줘
+      root.style.color = null;
+    }
+
+    // ---------------#item--------------------
+    let item = document.getElementById('item');
+    console.dir(item);
+    // #item의 style의 key: value;를 기록해줘
+    console.log(item.style);
+    // #item variable declaration
+    let white = '#fff';
+    // width: 20vw;
+    item.style.width = 20+widthUnit;
+    // height: 20vw;
+    item.style.height = 20+widthUnit;
+    // width: 20vw;가 참이면 border: 1px solid #fff;를 돌려줘, 정가운데로 정렬해줘
+    if(item.style.width === '20vw'){
+      // border: 1px solid #fff;
+      item.style.border = '1px solid #fff';
+      // 가운데로 정렬
+      item.style.display = 'flex';
+      item.style.alignItems = 'center';
+      item.style.justifyContent = 'center';
+    } else{
+      item.style.backgroundColor = white;
+    }
+  </script>
+</body>
+</html>
