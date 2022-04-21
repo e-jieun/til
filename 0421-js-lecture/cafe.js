@@ -51,16 +51,16 @@ let javachipPrapuccino = (americanoPrice-jaeryoObj.water-jaeryoObj.coffeebean)+j
 
 let greenteaPrapuccino = (americanoPrice-jaeryoObj.water-jaeryoObj.coffeebean)+jaeryoObj.greenteaPowder+jaeryoObj.milk+jaeryoObj.ice+jaeryoObj.whip+jaeryoObj.greenteaPowder;
 
-// let ment = '이 음료의 가격은';
+let ment = '이 음료의 가격은';
 
-// console.log(jieunCoffee);
-// console.log(javachipPrapuccino);
-// console.log(greenteaPrapuccino);
+console.log(`${ment} ${jieunCoffee}입니다`);
+console.log(`${ment} ${javachipPrapuccino}입니다`);
+console.log(`${ment} ${greenteaPrapuccino}입니다`);
 
 if(americanoPrice > 100000){
   console.log(`아메리카노 값은 ${americanoPrice}원 입니다. 구매하시겠어요?`);
 } else{
-  console.log(`아메리카노 값은 ${americanoPrice}입니다.`)
+  console.log(`아메리카노 값은 ${americanoPrice}입니다. 구매하세요!`)
 }
 
 /* 연습 포인트: 작성방식은 숙달이 필요하다
