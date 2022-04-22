@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // body style assignment
+    document.body.style.padding = 0;
+    document.body.style.margin = 0;
+    // get #root
+    const root = document.getElementById('root');
+    // #root를 콘솔에서 기록해줘
+    console.log(root);
+    // variable declaration
+    let widthValue = 100;
+    let heightValue = 100;
+    // #root style
+    root.style.width = `${widthValue}vw`;
+    root.style.height = `${heightValue}vh`;
+    root.style.backgroundColor = 'darkblue';
+    // log #root style props
+    console.log(root.style);
+    // array declaration
+    let backgroundColorArray = ['#262626', '#f2f2f2'];
+    // 변수 setSwitch를 선언, 0을 할당
+    let setSwitch = 0;
+    // #root에 string click하면 실행되는 함수 이벤트를 추가한다
+    root.addEventListener('click', function(){
+      if(setSwitch===0){
+        root.style.backgroundColor = backgroundColorArray[1];
+        setSwitch++;
+        // 첫번째 click을 실행하고나서 setSwitch = 1;로 값을 재할당해주기 때문에
+        // setSwitch !== 0; 
+      } else{
+        // setSwitch === 1;
+        root.style.backgroundColor = backgroundColorArray[0];
+        setSwitch = 0;
+      }
+    });
+  </script>
+</body>
+</html>
