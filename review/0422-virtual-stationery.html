@@ -13,10 +13,74 @@
     </div>
   </div>
   <script>
+    // *{margin: 0; padding: 0;}
+    document.body.style.margin = 0;
+    document.body.style.padding = 0;
+    // get #root's element
+    const root = document.getElementById('root');
+    // #root dir
+    console.dir(root);
+    // #root style
+    console.log(root.style);
+    // width: 100vw;
+    root.style.width = '100vw';
+    // height: 100vh;
+    root.style.height = '100vh';
+    // #text를 중앙 정렬
+    root.style.display = 'flex';
+    root.style.alignItems = 'center';
+    root.style.justifyContent = 'center';
+
+    // get #text's element
+    const text = document.getElementById('text');
+    // #text dir
+    console.dir(text);
+    // #text style
+    console.log(text.style);
+    text.style.width = '50vw';
+    text.style.height = '20vh';
+
     // 검색하기 = {추천, 직접 검색};
     // 기본용지 = {플레인, 라인, 그리드};
     // 사용자 용지 = {카메라, 사진, 되돌아가기};
     // 상품 용지 = {검색하기, 추천받기};
+    const select = {
+      serve: '제공되고',
+      searchObj: {
+        searchHowTo: '검색방법으로는',
+        recommend: '추천',
+        search: '직접 검색'
+      },
+      noteObj: {
+        default: ['무지', '줄', '모눈'],
+        user: ['카메라', '사진'],
+        none: '다시 텍스트'
+      }
+    };
+
+    // text.textContent
+    text.textContent = `서비스 사용법이 보고 싶다면 이곳을 눌러주세요!`;
+    // 변수 클릭값에 1을 할당해준다
+    // !이벤트 바깥 부분에 클릭값 변수를 설정해줘야 클릭 이벤트를 빠져나와서 다시 변수값이 1로 설정되서 계속 반복될 수 있다
+    let clickValue = 1;
+    // text.textContent부분을 클릭하면 textContent 값을 재할당
+    text.addEventListener('click', function(){
+      // 만약 변수 클릭값이 1과 같은 것이 참이라면
+      if(clickValue === 1){
+        // #text의 textContent 속성의 값을 이렇게 할당해라
+        text.textContent = `${select.searchObj.searchHowTo} ${select.searchObj.recommend}, ${select.searchObj.search}이 ${select.serve}, 시스템 노트로는 ${select.noteObj.default} 노트가 ${select.serve}, 사용자가 직접 원하는 ${select.noteObj.user[1]}이나 ${select.noteObj.user[0]}로 ${select.noteObj.user[1]}을 찍어서 노트를 설정할 수 있습니다.
+        만약 선택한 서비스를 되돌리고 싶다면 ${select.noteObj.none}를 눌러 주세요.`;
+        // click을 1로 여기서 설정해줘야 else의 실행문이 실행될 수 있다
+        // 그리고 나서 변수 클릭값의 값을 0으로 재할당해줘라
+        clickValue = 0;
+        // 변수 클릭값이 1과 같지 않은 것이 참이라면 
+      } else{
+        // #text의 textContent의 속성 값을 이렇게 재할당해라
+        text.textContent = `서비스 사용법이 보고 싶다면 이곳을 눌러주세요!`;
+        // 그리고 나서 변수 클릭값의 값을 1로 재할당해줘라
+        clickValue = 1;
+      }
+    })
   </script>
 </body>
 </html>
