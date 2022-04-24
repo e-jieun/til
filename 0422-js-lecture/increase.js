@@ -26,7 +26,7 @@ let indexValue = 0;
 // 간격을 두고서 할래
 // 타이머 만드는 거
 // function이 1번째 인수
-// 글라이더의 개념
+// 슬라이더의 개념
 let count = 0;
 let timer = setInterval(function(){
   // 만약 인덱스 값이 배열 길이보다 작은 게 참이면
