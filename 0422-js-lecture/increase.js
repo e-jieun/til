@@ -29,20 +29,26 @@ let indexValue = 0;
 // 글라이더의 개념
 let count = 0;
 let timer = setInterval(function(){
-  // 만약 인덱스 값이 
+  // 만약 인덱스 값이 배열 길이보다 작은 게 참이면
   if(indexValue < arr.length){
+    // 콘솔에 배열의 인덱스 값(번)으로 기록해라
     console.log(arr[indexValue]);
+    // 그리고 나서 인덱스 값에 1을 더한다
     indexValue++;
+    // 만약 인덱스 값이 배열 낄이보다 작지 않은 것이 참이면
   } else{
+    // 인덱스 값을 0으로 재할당한다
     indexValue = 0;
+    // 그리고 나서 카운트 값에 1을 더한다
     count++;
   }
-  
+  // 만약 카운트 값이 3보다 큰 것이 참이면
   if(count > 3){
     // 타이머를 꺼줘
     // 이 부분이 없으면 무한 반복
     clearInterval(timer);
   }
+  // 1s === 1000ms
 }, 1000);
 
 // =============================>
