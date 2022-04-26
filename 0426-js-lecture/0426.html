@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+
+
+  <!-- 겁먹지 말 것, 다 작성방식이 다르다 -->
+  <!-- <script>
+    // 값만 있는 상태
+    // 식별하고 꺼내오고싶어서 변수를 써준다
+    const arr = ['피카츄', '라이츄', '김주은', '꼬부기'];
+    const test = ['피카츄', '라이츄', '파이리', '꼬부기'];
+    // 값이 같은지 확인한다 => false를 값으로 돌려줌 === 비교 연산자는 true || false
+    console.log(arr[2] === test[2]);
+
+    // 1번 로직
+    if(arr[2] === test[2]){
+      console.log('무야호');
+    } else{
+      test[2] = '김주은';
+      console.log(test);
+    } // 21번 행의 if문 scope
+    // scope가 여기서 끝남
+
+    // 2번 로직
+    if(arr[2] === test[2]){
+      arr[2] = '비둘기';
+      test[2] = '비둘기';
+      console.log(arr);
+      console.log(test);
+    } else{
+      console.log('메롱');
+    }
+    // 1번 로직 !== 2번 로직
+    /* 자바스크립트는 사람처럼 위에서 아래로, 왼쪽에서 오른쪽으로 읽어간다
+    1. 아래의 것이 먼저 읽히면 생각보다 많이 힘들어진다 => 예상이 불가능함, 역순으로 읽혀지는 현상이 발생
+    === 호이스팅(hoisting)
+     */
+
+    // 변수는 규칙이 아니라 상태가 데이터는 문서 안에 들어있다
+    // 찾을 방법이 없음
+    // RAM(활성 메모리)이 이미 데이터를 쥐고있는 상태 => 위장이라면 이미 먹은 상태
+
+    // 식별한다 => 배열은 값을 어떤 표시로 스티커를 붙여놓는다
+    
+
+  </script> -->
+  <!-- <script>
+    // 변수 선언
+    /* var: 옛날 버전의 변수선언 방식, 물론 지금도 지원, hoisting이 된다 => 자바스크립트가 천대받음
+    let(=var): let은 hoisting(역순)이 안된다
+    const(!상수(constant)!): 변하지 않는 수, 바뀌지 않기 때문에 불편한 게 아니라 확정이 되니까 편해짐
+    => 코드 자체에 문제점을 발견하기가 매우 편리하다
+     */
+    
+    // !식별자 개념
+    // 대입을 안하고 변수만 선언 
+    let a;
+    // let은 암묵적으로 !언제든지 변할 예정이다!
+    // let을 발견하면 !어디서 변하는 것인지!를 찾는다
+    // const는 규칙상으로 무조건 정해줘야 한다
+    // => 개발자들은 const를 발견하면 기억해서 사용한다(=안심한다)
+
+    console.log(a); // undefined
+    a = 1;  // 1이란 값을 대입, 1이라는 숫자를 식별하는 스티커
+    console.log(a); // 1(defined)
+
+    // const는 선언과 동시에 변하지 않는 상수이므로 값을 대입해주는 것이 룰
+    // === 변수 선언과 동시에 초기화
+    // === 쉐입 만들고 레이어 이름 정해주고
+    // const b;
+    // console.log(b); //Uncaught SyntaxError: Missing initializer in const declaration
+    const root = document.getElementById('root');
+    // ---------------------------------------------------------->
+    <!-- /* 보통 문서(dom)를 선택하거나 할 때는 const 사용, let은 거의 사용 안함 */
+  </script> --> -->
+  <script>
+    
+    // 변할 예정이 없기 때문에
+    const a = document.querySelector('#root');
+    
+    // 변할 예정이기 때문에, 변할 수도 있으므로
+    let value = '100';  // 변수로 꺼냈다 = 변수로 핸들링할래
+    let colorValue = '333'; 
+    a.style.width = `${value}vw`; // 템플릿 문자열 방식
+    a.style.height = value+'vh';
+    a.style.backgroundColor = `#${colorValue}`; // #을 따로 작성해줘도 되는구나
+
+    a.addEventListener('click', function(){
+      let result; // 변수로 담아보는 연습
+      console.log('result 연산 시작 전의 value 값은 '+value);
+      result = value/2;
+
+      a.style.width = result+'vw';
+      a.style.height = result+'vh';
+      
+      value = result; //result = 50;을 다시 value로 대입
+      console.log('value = result; 대입 후의 value 값은 '+value);
+    });
+
+    // ------------------------------------------------------->
+    /* 변수 사용법 vs 변수 활용법
+    알아야 => 사용법은 그저 규칙 syntax
+    연구해야 함 => 활용법은 grammer => 각자의 실력
+    =>추상화 작업 중의 일환
+    */
+  </script>
+</body>
+</html>

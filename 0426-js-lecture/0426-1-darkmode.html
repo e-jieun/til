@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <button>click</button>
+  </div>
+  <script>
+    const root = document.getElementById('root');
+    // 버튼을 식별해준다
+    // const test = document.querySelector('#root > button');
+    const clickBtn = root.children[0];
+
+    console.dir(root);
+    console.log(clickBtn);
+
+    let bgColorValue = 333;
+
+    root.style.width = '100vw';
+    root.style.height = '100vh';
+    root.style.backgroundColor = `#${bgColorValue}`; // 배경색에 문자열 #333이라는 글자가 대입, 회색이란 말은 없다
+    // ------------------------------------------->
+    // 브라우저의 어떤 규칙 때문에 회색으로 바뀐느 과정이 있다
+    // !숫자를 쓰면 색깔이 바뀐다 -> 숫자를 사칙연산 할줄 아는데!
+    // !숫자를 변수로 꺼내면 연산할 수 있겠다!
+    
+    
+    // 클릭버튼에 이벤트 걸기
+    
+    // 스위치로 사용할 변수 만들어주기
+    let data = true;
+    clickBtn.addEventListener('click', function(){
+      // console.log('hello'); // 이벤트 test
+      // console.log(root.style.backgroundColor);  //  rgb(51, 51, 51)
+      if(data === true){
+        console.log('data value: '+data);  // true
+        data = false;
+        root.style.backgroundColor = 'salmon';
+        clickBtn.textContent = 'day';
+      } else{ // else === data !== true(=== data === false)
+        console.log('else로 data value:'+data);
+        data = true;
+        root.style.backgroundColor = 'blue';
+        clickBtn.textContent = 'night';
+      }
+      console.log(clickBtn);
+    });
+    // ============================================>
+    /* on/off의 개념을 알고리즘에 심어줌 === 굉장히 많이 쓰이는 디자인 패턴 */
+
+  </script>
+</body>
+</html>
