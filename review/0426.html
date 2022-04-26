@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    // arr 이란 이름의 배열을 선언
+    const arr = ['피카츄', '라이츄', '파이리', '꼬부기'];
+    const test = ['피카츄', '라이츄', '잉어킹', '꼬부기'];
+    // arr[2] === test[2] 값이 같은지 확인
+    console.log(arr[2]===test[2]);  // false
+    // 비교 연산자 === true || false의 값으로 돌려준다
+
+    // 1번 논리
+    // 만약 arr[2]와 test[2]를 비교했을 때 값이 같은 것이 참이면
+    if(arr[2] === test[2]){
+      // 콘솔에 문자열 same을 기록
+      console.log('same');
+      // 만약 비교한 값이 같지 않은 것이 참이면
+    } else{
+      // 배열 test[2]의 값을 문자열 '파이리'로 재할당해줘라
+      test[2] = '파이리';
+      // 콘솔에 text 배열을 기록해보면 원래 할당된 값 문자열 잉어킹이 문자열 파이리로 재할당된 것을 볼 수 있다
+      console.log(test);
+    } // 21st row의 if() scope ended
+
+    // 2번 논리
+    if(arr[2] === test[2]){
+      arr[2] = '메가도스';
+      test[2] = '메가도스';
+      console.log(arr);
+    } else{
+      console.log('다르다');
+    }
+
+    // 1번과 2번 논리는 다르다, 그러나 적용되는 영역을 같게 했다
+    // js는 위에서 아래로 왼->오로 읽어주기 때문에 1번 논리를 주석 처리하지 않으면 값이 같은 문자열인 파이리가 되기 때문에 배열의 값이 문자열 메가도스로 바뀌게 된다
+
+    // ---------------------------------------------------
+
+    // var: 옛날 버전, 호이스팅(역순)의 문제
+    // let(=var): 역순이 안된다
+    // const(!constant = 상수!): 변하지 않는 수(= 상수), 바뀌지 않기 때문에 불편한 게 아니라 확정이 되니까 편해짐 => 코드 자체의 문제점을 발견하기가 매우 편리
+
+    // !식별자 개념!
+    // 대입을 안하고 변수만 선언
+    // let a;
+    // let은 암묵적으로 !언제든지 변할 수 있는 변수!, !어디서 변할지를 찾아야!
+    // console.log(a); // 값을 할당해주지 않아서 undefined 나옴
+    // a = 10;
+    // 값을 할당해주면 값을 콘솔에 기록했을 때 나옴
+    // console.log(a);
+    
+    // const는 선언과 동시에 변하지 않는 상수이므로 값을 대입해주는 것이 룰
+    // === 변수 선언과 동시에 초기화
+
+    // const b; // 초기화값을 지정해주지 않으면 에러가 난다
+    // console.log(b);
+    
+    // const root = document.getElementById('root');
+    /* 보통 문서(dom)를 선택하거나 할 때는 const 사용, let은 거의 사용 안함 */
+    // 변하지 않을 예정이니까
+
+    // --------------------------------------------------
+
+    // 아이디 요소를 선택하는 곳에는 변할 예정이 없으므로 상수를 사용해준다
+    const a = document.getElementById('root');
+    // 변할 예정인 부분들, 변수를 설정해주는 부분들
+    let value = '100';  // 변수로 꺼냈다, 변수로 핸들링하려고
+    let colorValue = '333'; 
+    a.style.width = `${value}vw`; // 템플릿 문자열 방식
+    a.style.height = value+'vh';
+    a.style.backgroundColor = `#${colorValue}`; // #을 따로 작성해줘도 되는구나
+
+    a.addEventListener('click', function(){
+      let result; // 결과값을 변수로 선언해주고 
+      // 변수로 담아보는 연습
+      console.log('result 연산 시작 전의 value 값은 '+value);
+      result = value/2; // 이곳에서 값을 할당했다
+
+      a.style.width = result+'vw';  // 50vw
+      a.style.height = result+'vh'; // 50vh
+      
+      value = result; //result = 50;을 다시 value로 대입
+      // 값을 result 변수로 재할당해준다
+      console.log('value = result; 대입 후의 value 값은 '+value);
+    });
+    // ------------------------------------------------------->
+    /* 변수 사용법 vs 변수 활용법
+    알아야 => 사용법은 그저 규칙 syntax
+    연구해야 함 => 활용법은 grammer => 각자의 실력
+    =>추상화 작업 중의 일환
+    */
+  </script>
+</body>
+</html>

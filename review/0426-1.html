@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+</head>
+<body>
+  <div id="root">
+    <button>click!</button>
+  </div>
+  <script>
+    document.body.style.margin = 0;
+    document.body.style.padding = 0;
+
+    const root = document.getElementById('root');
+    // 식별자 만들어주기
+    // 버튼을 식별해준다
+    const test = document.querySelector('#root > button');
+    // root의 자식요소로 클릭버튼을 식별해줘도 됨
+    const clickBtn = root.children[0];
+    console.log(clickBtn);
+
+    // 정수(숫자) 333으로 정해주고 값을 가져오거나 하면 문자열로 불러오지 않아도 되서 연산에 자유로워질 것 같음
+    let bgColorValue = 333;
+    let center = 'center';
+    // #root style
+    root.style.width = bgColorValue-233+'vw';
+    root.style.height = bgColorValue-233+'vh';
+    root.style.backgroundColor = `#${bgColorValue}`;  //템플릿 리터럴, 템플릿 문자열
+    // 버튼을 중앙 정렬
+    root.style.display = 'flex';
+    root.style.alignItems = center;
+    root.style.justifyContent = center;
+    console.log(root);
+
+    // 스위치처럼 on/off를 해줄 변수를 만들기
+    let data = true;
+    clickBtn.addEventListener('click', function(){
+      // console.log('hello');
+      if(data === true){
+        root.style.backgroundColor = '#e5e5e5';
+        data = false;
+        clickBtn.textContent = 'day';
+      } else{
+        root.style.backgroundColor = `#${bgColorValue}`;
+        data = true;
+        clickBtn.textContent = 'night';
+      }
+    });
+    /* on/off의 개념을 알고리즘에 심어줌 === 굉장히 많이 쓰이는 디자인 패턴 */
+  </script>
+</body>
+</html>
