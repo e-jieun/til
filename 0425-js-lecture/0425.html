@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #root{
+      width: 100vw;
+      height: 100vh;
+      background-color: #333;
+    }
+    #root>div{
+      width: 100px;
+      height: 100px;
+      border: 1px solid #ccc;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <!--div 엘리먼트 노드, 자식에 id라는 어트리뷰트 노드, 텍스트도 노드 -->
+  <div id="root">
+    <div>1</div>
+    <div>2</div>
+  </div>
+
+  <script>
+    // 코딩 패턴 눈여겨 보기
+    // 식별자
+    const root = document.getElementById('root');
+    // 리액트와 패턴이 비슷하다
+    const one = root.children[0]; // text node === '1'
+    // 똑같은 부분을 가리킨다
+    // root을 기준으로
+    const two = root.children[1]; // text node === '2'
+    // css 방식, 변수가 많아짐
+    // const test = document.querySelector('#root>div:nth-child(2)');
+
+    // !재할당!
+    /* 필요한 만큼 객체에 접근해서 setting을 할 수 있다
+    => !할당, 재할당! */
+    // =은 대입 => 재할당했다
+    two.textContent = '이건 두번째!';
+    
+    console.log(root);
+    console.dir(root);
+    // textContent를 확인하면
+    console.dir(root.children[0]);
+    console.log(two.textContent);
+    console.log(typeof two.textContent);
+
+    // html 구조를 관계로 해버릇 자바스크립트의 특징적 구조 때문
+    // !내가 식별한 어떤 태그는 분명히 객체다!
+    // !따라서 객체만 조회할 수 있으면, 자식이고 뭐고 다 둘러볼 수 있다!
+    // console.dir
+
+    // event: !무슨 일이 일어났다!
+    // click event: 클릭이 발생했다
+    // 문서를 다룰 때만 수도 없이 사용할 것
+    // addeventlister()도 자식이기 때문에 브라우저의 어딘가에 붙어있다
+    one.addEventListener('wheel', function(){
+      // 클릭하면 문서가 바뀌는 것이다
+      /* addEventListner() <- dom api method(문서 전용 내장 함수)
+      메서드가 상당히 많아서 콘솔 찍는 것이 맞다 */
+      two.textContent = '클릭했다~';
+      two.style.backgroundColor = '#ff6666';
+      two.style.transition = '1s';
+      two.style.width = '200px';
+
+      // 중간에 막히면(!되겠거니 하다가 막힘!) 콘솔을 찍어서 디버깅 => 제대로 안 써준 것
+      console.log(two.style.backgroundColor);
+      // 조건식이 참이면 
+      // !rgb 값 띄어쓰기 오류
+      /* 제어가 잘 안됐던 부분들
+      1. 이미 만들어진 조건 때문에 규칙을 찾아주는 수고가 필요
+      2. console.dir()을 들여다 볼 때가 많아진다
+       */ 
+      if(two.style.backgroundColor === 'rgb(255, 102, 102)'){
+        // 배경색을 블루로 재할당
+        two.style.backgroundColor = 'skyblue';
+      }
+    });
+  </script>
+</body>
+</html>
