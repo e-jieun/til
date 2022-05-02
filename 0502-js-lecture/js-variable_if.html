@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    const root = document.getElementById("root");
+    // 변수 root로 문서의 id요소 'root'를 가져와 선언한다
+    root.style.fontSize = "5rem";
+    // #root의 스타일 속성 중 font-size의 값을 문자열 5rem으로 할당한다
+    let isStatus = true;
+    // 변수 isStatus를 선언하고 값을 boolean 값 true로 지정한다
+    let current = 0;
+    // 변수 current를 선언하고 값을 숫자 0으로 대입한다
+    root.textContent = current;
+    // console.log(root.textContent);
+    // #root의 textContent를 변수 current의 값인 0으로 설정해준다 
+    root.addEventListener('click', function () {
+      // #root에 클릭 이벤트를 설정해준다
+
+      // !!!
+      // 숫자를 카운팅해주는 부분
+      if (isStatus === true) {
+        // 만약 변수 isStatus의 값이 불리언 true와 일치하는 것이 참이라면
+        current++;
+        // 변수 current의 값에 숫자 1을 더해준다
+        if (current >= 10) {
+          // 만약 변수 current의 값이 10보다 크거나 같은 것이 참이라면
+          isStatus = false;
+          // 변수 isStatus의 boolean 값을 false로 재할당해준다
+        }
+        // 위에서 변수 current의 값이 10보다 크거나 같은 것이 참이어서 isStatus의 값을 boolean값 false로 할당하고 나서
+        root.textContent = current;
+        // console.log(current);
+        // #root의 textContent를 실행문에서 숫자 1을 더한 current 값으로 대입해준다
+      } else {
+        // 만약 변수 isStatus의 값이 불리언 true와 일치하지 않는 것이 참이라면
+        current--;
+        // 변수 current 값에 숫자 1을 빼준다
+        if (current <= 0) {
+          // 만약 current가 0보다 작거나 같은 것이 참이라면
+          isStatus = true;
+          // isStatus의 값을 boolean 값 true로 재할당해준다
+        }
+        // 위에서 변수 current의 값이 0보다 작거나 같은 것이 참이어서 isStatus의 값을 boolean값 true로 할당하고 나서 
+        root.textContent = current;
+        // #root의 textContent를 실행문에서 숫자 1을 빼준 변수 current의 값으로 대입해준다
+      }
+    })
+  </script>
+
+</body>
+
+</html>

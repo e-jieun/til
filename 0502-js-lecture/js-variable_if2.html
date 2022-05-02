@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    document.body.style.margin = 0;
+    document.body.style.padding = 0;
+    // console.log(document.body);
+
+    const root = document.getElementById('root');
+    console.dir(root);
+
+    let sectionArr = ['피카츄', '라이츄', '파이리', '꼬부기'];
+    console.log(sectionArr);
+
+    let sectionColor = ['salmon', 'darkgray', 'darkblue', 'darkcyan'];
+    console.log(sectionColor);
+
+    // window의 구조
+    console.dir(window);
+    // https://developer.mozilla.org/ko/docs/Web/API/Window
+    // => window는 뷰포트 창을 의미, DOM문서를 담은 창, document 속성이 창에 불러온 DOM 문서를 가리킴
+    // innerWidth, innerHeight 속성이 window에 있는 것을 볼 수 있음
+    // innerWidth: 브라우저 윈도우의 뷰포트 너비, 수직 스크롤바가 존재한다면 포함한다
+    // innerHeight: 브라우저 윈도우의 뷰포트 높이
+
+    // 변수 viewWidth === window의 innerWidth
+    const viewWidth = window.innerWidth;
+    console.log(viewWidth);
+    // 변수 viewHeight === window의 innerHeight
+    const viewHeight = window.innerHeight;
+    console.log(viewHeight);
+
+    // #root의 넓이값, 높이값을 뷰포트에 보여지는 넓이값, 높이값으로 설정해준다
+    // !단위를 설정해줘야 함!
+    root.style.width = `${viewWidth}px`;
+    root.style.height = `${viewHeight}px`;
+    root.style.backgroundColor = '#c4c4c4';
+    console.log(root);
+    
+    // #root에 적용할 클릭 이벤트 생성
+    root.addEventListener('click', function(){
+      // 변수 i가 0부터 sectionArr의 길이보다 작을 때까지 실행문을 실행시키고 나서 i에 1을 더한다
+      for(let i = 0; i < sectionArr.length; i++){
+        // 변수 sectionElement를 선언하고 문서에 section 요소를 생성해달라고 함
+        let sectionElement = document.createElement('section');
+        console.log(sectionElement);  // sectionArr의 배열 안에 들어있는 모든 값이 찍힌다
+        sectionElement.textContent = sectionArr[i]; // sectionElement의 textContent에 sectionArr[i](sectionArr 배열의 i번의 값)을 대입해준다
+        sectionElement.style.width = `${viewWidth}px`;
+        sectionElement.style.height = `${viewHeight}px`;
+      }
+    });
+
+
+
+  </script>
+</body>
+</html>
