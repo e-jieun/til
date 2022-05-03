@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 1. A버튼을 클릭할때마다 <h1> 태그에 배열의 포켓몬스터들이 하나씩 나타나게 만드세요.
+2. 마지막 포켓몬스터가 나온다음은 "포켓몬스터를 다모았다" 라는 텍스트를 나타나게 만드세요. -->
+  <div id="root">
+    <!-- 이 부분에 텍스트를 넣어주면 -->
+    <!-- <h1></h1> -->
+    <button>A</button>
+  </div>
+  <script>
+    // get #root
+    const root = document.getElementById('root');
+    console.log(root);
+    root.setAttribute('style','width: 100vw; height: 100vh;');
+
+    // get button
+    const clickBtn = document.querySelector('button');
+    console.log(clickBtn);
+
+    // get h1
+    // const h1 = root.children[0];
+    // console.dir(h1);
+
+
+    // 포켓몬 배열
+    const practics = ["피카츄", "라이츄", "파이리", "꼬부기", "버터풀", "야도란", "피죤투", "또가스"];
+    console.log(practics);
+
+    // const num = [0, 1, 2, 3, 4, 5, 6, 7];
+    // h1 태그에 배열의 포켓몬이 하나씩 나타나도록
+    
+    // root의 자식 요소로 h1을 추가해준다
+
+    // 8개가 다 찍히면 '포켓몬을 다 모았다'란 텍스트가 나타난다
+
+    // hint
+    // 1. 식별할 녀석 작성 2. 이벤트가 일어날 떄 배열에 있는 값이 나타남
+    // 3. 이벤트가 일어날 때 배열의 원소들이 순차적으로 나타남
+    // 4. 마지막 원소가 나타난 뒤에 새로운 텍스트 '포켓몬을 다 모았다'
+
+    let value = 1;
+    clickBtn.addEventListener('click', function(){
+      // 변수 i는 0, i가 practics.length보다 작을 때까지 실행하고, i에 +1 해준다
+      for(let i = 0; i < value; i++){
+        // for(let i = 0; i < practics.length; i++)로 작성을 하면 모두 찍힌다
+        // !하나씩 찍을 수 있도록 해야하기 때문에 작성해준 1
+        // 문제는 0번인 피카츄밖에 안 찍힘
+        console.dir(root.children);
+        // 반복하는 동안 h1 태그 요소를 문서에 생성해준다
+        let makeElement = document.createElement('h1');
+        root.appendChild(makeElement);
+        console.log(makeElement);
+        // if(){
+        //   makeElement.innerHTML = practics[i];
+        //   i++; // 이 부분이 practics의 인덱스가 1씩 추가되도록 하면 좋을텐데..........
+        // }
+        // console.log(root.children.length);
+        // console.log(value);
+        // 클릭값을 1 더해준다
+        // value++;
+        
+        // 배열에 있는 부분을 다 찍으면 모두 찍었다고 알려줄 부분
+        if(i === practics.length-1){
+          // alert('포켓몬스터를 다 모았다!');
+        }        
+      }
+    });
+    // h1.textContent에 practics[i]를 찍어준다
+
+
+    
+  </script>
+</body>
+</html>
