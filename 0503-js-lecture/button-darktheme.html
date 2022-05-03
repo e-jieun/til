@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- a버튼을 누르면 배경색 어둡게 글씨색 밝게
+  B버튼을 누르면 배경색 밝게 글씨색 어둡게 -->
+  <div id="root">
+    <button>A</button>
+    <button>B</button>
+  </div>
+  <script>
+    //*
+    document.body.setAttribute('style','margin: 0; padding: 0;');
+    // get #root
+    const root = document.getElementById('root');
+    console.log(root);
+    root.setAttribute('style','width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column;');
+    // clickBtn은 button 태그를 배열로 가져와줌
+    const clickBtn = document.getElementsByTagName('button');
+    console.log(clickBtn);
+    // clickBtn[0]
+    const buttonA = clickBtn[0];
+    console.log(buttonA);
+    // clickBtn[1]
+    const buttonB = clickBtn[1];
+    console.log(buttonB);
+
+    // 글씨를 넣어줄 태그를 만들어주자
+    const letterBox = document.createElement('div');
+    console.dir(letterBox);
+    // #root의 자식요소로 div를 넣어주기
+    root.appendChild(letterBox);
+    // console.log(root.children);
+    // letterBox에 텍스트를 넣어준다
+    // letterBox.innerHTML = 'lorem ipsum';
+    // letterBox의 위치를 좀 조정해주자
+    // console.log('!');
+    // console.dir(letterBox);
+    // .getAttribute()
+    // https://developer.mozilla.org/ko/docs/Web/API/Element/getAttribute
+    letterBox.textContent = 'lorem ipsum';
+    // letterBox.style.position = 'absolute';
+    // letterBox.style.top = '10vh';
+    letterBox.setAttribute('style','position: absolute; top: 10vh;')
+    console.log(letterBox);
+
+    // buttonA의 클릭 이벤트
+    buttonA.addEventListener('click', function(){
+      // console.log('이벤트 작동');
+      // 버튼 a를 누르면 배경색 어둡, 글씨색 밝음
+      // root.style.backgroundColor = '#414141';
+      letterBox.style.color = '#fff';
+      console.log(root);
+      // 만약 letterBox의 컬러가 #fff이면
+      if(letterBox.style.color === 'rgb(255, 255, 255)'){
+        // console.log('배경색을 바꿔줘');
+        root.style.transition = '2s';
+        root.style.backgroundColor = '#000';
+      }
+    });
+
+    // buttonB의 클릭 이벤트
+    buttonB.addEventListener('click', function(){
+      // console.log('이벤트 작동');
+      // 버튼 b를 누르면 배경색 밝음, 글씨색 어둡
+      // root.style.backgroundColor = '#fff';
+      letterBox.style.color = '#414141';
+      console.log(letterBox.style);
+      
+      // 만약 letterBox의 컬러가 #fff이면
+      if(letterBox.style.color === 'rgb(65, 65, 65)'){
+        console.log('배경색을 바꿔줘');
+        root.style.backgroundColor = '#e3e3e3';
+        root.style.transition = '2s';
+      }
+    });
+  </script>
+</body>
+</html>

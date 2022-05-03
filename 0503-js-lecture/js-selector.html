@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="root">
+    <li class="menu-items">menu-1</li>
+    <li class="menu-items">menu-2</li>
+    <li class="menu-items">menu-3</li>
+    <li class="menu-items">menu-4</li>
+    <li class="menu-items">menu-5</li>
+    <li class="menu-items">menu-6</li>
+    <li class="menu-items">menu-7</li>
+    <li class="menu-items">menu-8</li>
+    <li class="menu-items">menu-9</li>
+    <li class="menu-items">menu-10</li>
+  </ul>
+
+  <script>
+    const root = document.getElementById('root');
+    // const getTag = document.getElementsByTagName('ul'); // getElement!s! -> 배열이 아닐까
+    // const getTag = document.getElementsByTagName('li');
+    // const getClass = document.getElementsByClassName('menu-items');
+    const queryGet = document.querySelectorAll('menu-items');  //null
+    // ? => 첫번째 요소만 선택 => querySelectorAll()
+
+    console.log(queryGet);
+
+
+    // getTag.style.color = 'red';  // 여기서 getTag는 배열이기 때문에 배열처럼 사용해주기 => 리턴타입을 빠르게 확인하는 것이 중요
+    // console.log() -> 8할은 해결이 됨, 타입이 보이기 때문
+    // mdn -> https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName
+
+    // 반복문이라는 단위를 꺼내오는 것이 어휘가 된다
+    // 이런 것들은 어떻게 써야할까? -> 제어문이 활용된다 => !syntax!
+    // class의 폴리필? => https://www.google.com/search?q=%ED%8F%B4%EB%A6%AC%ED%95%84&oq=vhfflvlf&aqs=chrome.1.69i57j0i512l6.2238j0j7&sourceid=chrome&ie=UTF-8
+    // for(let i = 0; i < getTag.length; i++){
+    //   getTag[i].style.color = 'red';
+    // }
+
+    // getTag[0].style.color = 'red';
+    // console.log(getTag);  // html collection? []안에 있다
+    // console.dir(root);
+
+    // 식별하는 셀렉터(메서드)
+    // 내장함수(메서드)들은 리턴타입이 존재
+
+    // [] 배열, {} 객체, () 함수
+
+    // ==========================================================
+    // (식별할 때는 식별하는 === 다른 부분들도 마찬가지로) DOM API 내장 메서드가 있고 미리 만들어져 있기 때문에 외우는 것을 불가능하다
+    // 1. 에디터의 도움
+    // 2. 확장 플러그인의 도움
+    // 3. 개발자 도구의 도움
+    // 4. 검색의 힘으로
+    // => !!!!!!!!!!!!!!!목표는 리턴타입을 확인하는 것!!!!!!!!!!!!!
+
+    // 7개 중의 하나 
+
+  </script>
+
+</body>
+</html>

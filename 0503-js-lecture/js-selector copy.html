@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="root">
+    <li class="menu-items">menu-1</li>
+    <li class="menu-items">menu-2</li>
+    <li class="menu-items">menu-3</li>
+    <li class="menu-items">menu-4</li>
+    <li class="menu-items">menu-5</li>
+    <li class="menu-items">menu-6</li>
+    <li class="menu-items">menu-7</li>
+    <li class="menu-items">menu-8</li>
+    <li class="menu-items">menu-9</li>
+    <li class="menu-items">menu-10</li>
+  </ul>
+  <button>click</button>
+
+  <script>
+    // ul태그 스타일링
+    const ul = document.getElementById('root');
+    console.log(ul);
+    const liItems = document.querySelectorAll('.menu-items');  //null
+    const clickBtn = document.querySelector('button');
+    
+    // ul style 
+    ul.style.width = '300px';
+    ul.style.height = '500px';
+    ul.style.backgroundColor = 'salmon';
+    ul.style.display = 'none';
+    console.log(ul.style);
+    // console.log(clickBtn.style);
+    
+    // 클릭하면 불리언 타입 변수를 
+    let isStatus = true;
+    
+    // 코드를 보는 안목
+    // 코드를 보는 안목 1. 가장 큰 제어만 보는 것 -> 클릭이라는 이벤트
+    // clickBtn.addEventListener('click', function(){
+    //   // isStatus = false;
+    //   // console.log(isStatus+'값 입니다');
+
+    // 코드를 보는 안목 2. 제어하는 타겟이 무엇인지만 파악하는 것
+    //   if(isStatus === true){
+      //     console.log('hello');
+      //     isStatus = false;
+      // 코드를 보는 안목 3. 세부제어일 뿐 -> 배열이기 때문에 쓴 것 => 세부제어는 어떤 규칙에 따랐을 뿐이다. 
+    //     // ---------------------------------------
+    //     for(let i = 0; i < liItems.length; i++){
+    //       liItems[i].style.display = 'none';
+    //       ul.style.display = 'none';
+    //     }
+    //     // ---------------------------------------
+    //   } else{
+    //     console.log('bye');
+    //     isStatus = true;
+    //     // ---------------------------------------
+    //     for(let i = 0; i < liItems.length; i++){
+    //       liItems[i].style.display = 'block';
+    //       ul.style.display = 'block';
+
+    //     }
+    //     // ---------------------------------------
+    //   }
+    // });
+    // => 코드를 보는 안목 -> 결론: if문으로 제어하려고 했구나 얘는 이걸가지고 뭘 했구나
+    // -> 이해한다 === 전문가의 레벨, 진짜 !실력!
+    // => 마크업을 할 줄 아는 능력, 배열이 무엇인지 아는 능력
+    // 복기하기, 연습하기
+
+    // ul display = none; 상태에서 보였다 안 보여졌다 하도록
+    clickBtn.addEventListener('click', function(){
+      // isStatus = false;
+      // console.log(isStatus);
+
+        // isStatus가 true인 것이 참일 경우
+      if(isStatus === true){
+        // console.dir(ul);
+        ul.style.display = 'block';
+        isStatus = false;
+        console.log('보인다');
+        // isStatus가 true가 아닌 것이 참일 경우
+        // isStatus가 false일 경우에 실행될 부분
+      } else{
+        ul.style.display = 'none';
+        console.log('안보인다');
+        isStaus = true;
+      }
+      // ?한번의 반복은 잘 되지만 안보인다에서 반복됨 
+      // ?해결할 부분
+    });
+
+  </script>
+
+</body>
+</html>
