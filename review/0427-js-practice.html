@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- h1태그를 클릭할 때마다 글씨 크기가 1px씩 커지는 인터랙션 구현 -->
+  <h1>hello</h1>
+  <script>
+    // h1을 식별해준다
+    const h1 = document.querySelector('h1');
+    // console.dir(h1);
+    // console.log(h1);
+
+    // 변수 h1 폰트 사이즈에 숫자 16을 대입
+    // h1의 폰트 사이즈를 숫자로 정해놓고 연산해서 사용할 수 있으면 편리할 것 === 변수를 따로 선언하고 숫자로 값을 할당한다
+    let h1Font = 16;
+
+    h1.style.fontSize = h1Font+'px';
+
+    // h1 태그에 이벤트 생성을 해줌
+    h1.addEventListener('click', function(){
+      // console.log('clicked');
+      h1Font++;
+      h1.style.fontSize = h1Font+'px';
+      console.log(h1);
+      //크기가 30이면 감소되도록 인터랙션 구현
+      // 비교 연산자(comparison operator)
+      // https://www.w3schools.com/jsref/jsref_operators.asp
+      if(h1Font >= 30){
+        h1Font--;
+        h1.style.fontSize = h1Font+'px';
+        console.log(h1);
+      }
+      if(h1Font <= 10){
+        h1Font++;
+        h1.style.fontSize = h1Font+'px';
+      }
+    });
+    // 러닝커브(learniing curve)가 당연히 있다
+    // 값을 제어하는 !논리!적인 생각 꺼내는 작업
+    
+  </script>
+</body>
+</html>

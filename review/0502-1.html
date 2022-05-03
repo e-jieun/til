@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById('root');
+    console.dir(root);
+    // 글씨가 들어가서 크기가 자동으로 설정돼있음
+    // offsetHeight: 21
+    // offsetLeft: 8
+    // offsetParent: body
+    // offsetTop: 8
+    // offsetWidth: 972
+
+    // root.innerHTML[0] = '겜';
+    // console.log(root.innerHTML);
+    root.innerHTML = '겜';
+    // innerHTML의 set은 배열로 하지 못함
+    let a = '겜';
+    let b = '블';
+    let c = '러';
+    let originData = '텀';
+    let text = originData+b+c;
+    root.innerHTML = text;
+    console.log(root.innerHTML);
+    // text[0] = '겜';
+    // text값 재할당
+    text = a+b+c;
+    root.textContent = text;
+    console.log(root.textContent);
+    // 문자열도 배열이다
+    console.log(text[0]);
+    console.log(root.innerHTML[0]);
+
+    let inner = '나는 지금 코딩하고 있다';
+    root.textContent = inner;
+    root.style.color = '#fff';
+
+    // 사용하려고 만드는 변수를 떠올리기
+    let current = 0;  //  current
+    // 1. 눈에 안보이니까 콘솔로 확인해버릇하기
+    // 2. if(){}는 뭔가 비교를 할 때 많이 씀 === 판단하는 메인 제어문 === 비교를 할 값을 잘 만드는 것이 프로그래밍 실력
+
+    // *연습 포인트 -> 상태 제어 === 자꾸 판단을 해보는 것
+    // 알고리즘 연습 => 어떻게 사용하느냐의 프로그래밍의 기본기 중의 하나
+
+    root.addEventListener('click', function(){
+      // console.log('hello');
+      current++;
+      // 클릭해서 커런트 값이 1과 같으면
+      if(current === 1){
+        // console.log(current);  //  1
+        // root의 글씨색을 검정색으로 바꿔줘
+        root.style.color = 'rgb(0, 0, 0)';
+        // current = 0;
+        current = 0;
+        // 커런트가 1과 같지 않은게 참이면
+
+        // ?흰색으로 다시 변하도록 하는 부분이 잘 작동하지 않아서 다시 볼 것
+      } else{
+        console.log('nonono');
+        root.style.color = 'rgb(255, 255, 255)';
+        current++;
+      }
+    });
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+  <script>
+    const root = document.getElementById('root');
+    console.dir(root);
+    console.log(root.style);
+
+    let center = 'center';
+
+    root.style.width = '100vw';
+    root.style.height = '100vh';
+    // 가운데 정렬
+    root.style.display = 'flex';
+    root.style.alignItems = center;
+    root.style.justifyContent = center;
+    // root.style.flexDirection
+    root.style.columnGap = '3vw';
+
+    // 
+    // const item = root.children;
+    const item1 = root.children[0];
+    const item2 = root.children[1];
+    const item3 = root.children[2];
+
+    console.log(root);
+    console.dir(item);
+    item1.style.width = '100px';
+    item1.style.height = '100px';
+    item1.style.backgroundColor = 'gray';
+    
+    item2.style.width = '100px';
+    item2.style.height = '100px';
+    item2.style.backgroundColor = 'gray';
+    
+    item3.style.width = '100px';
+    item3.style.height = '100px';
+    item3.style.backgroundColor = 'gray';
+
+    item1.addEventListener('click', function(){
+      root.style.flexDirection = 'column';
+      root.style.rowGap = '3vw';
+    });
+
+  </script>
+</body>
+</html>
