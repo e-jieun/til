@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <button id="click-button">click</button>
+    <div>graybar</div>
+  </div>
+
+  <script>
+    const root = document.getElementById('root');
+    console.dir(root);
+
+    const grayBar = root.children[0];
+    console.dir(grayBar);
+
+    const clickBtn = document.getElementById('click-button');
+    clickBtn.addEventListener('click', function(){
+      // console.log('test');
+      let value = 1;
+      let sectionString = 'hello';
+      for(let i = 0; i<value; i++){
+        // 섹션 요소를 만든다 -> 요소를 생성해주는 내장함수 === .createElement();
+        let makeSection = document.createElement('section');
+        makeSection.innerHTML = sectionString;
+        // grayBar.innerHTML = '<section>hello</section>';
+        console.log(grayBar);
+        // DOM(문서 객체 모델) 요소를 동적(제어를 통해서)으로 추가했다(정적으로 추가하는 방식 === HTML에 직접 작성하는 방식)
+        // === JS를 통해서 문서 자체를 만들어 버림
+        
+        // textContent는 태그 추가용은 아니다
+        // innerHTML이 태그를 넣을 수 있는 부분이었구나
+        /* 1. 일단은 구상한 것의 가장 큰 요소를 찾는다
+        2. 모르는 이슈들을 발견한다
+        3. 개발자 도구 사용 시도 안 먹힘
+        4. 찾은 방법을 직접 테스트 => 코드는 짧게 테스트 버전으로 => !새롭게 시도하는 뭔가!는 짧게 코드를 쓰고 테스트 해본다
+        === 메인 파일로 테스트하면 원인 모를 문제가 생겼을 때 원인을 못 찾는 일이 생기기 때문(이렇게 되면 잘못한 것이다)
+        5. 추측하건데 에러가 없으면 작성법을 틀린 건 ㅇ아니다
+        5-1. console.log();를 통해 작성은 에러가 나지 않는다라는 것을 확인
+        5-2. issue.1: 10번 반복하지만 10번 추가되진 않는다
+        6. 검색은 창피한 것이 아니라 당연히 해야할 것
+        6-1. 검색창을 안 켜고 일하면 자세가 안된 것(이건 잘못이다)
+         */
+        makeSection.style.width = '50px';
+        makeSection.style.height = '50px';
+        makeSection.style.backgroundColor = '#c4c4c4';
+        /* 자식으로 grayBar에 덧붙여달라고 한다
+        append: 추가하다, 덧붙이다, 자식으로 덧붙인다
+        appendChild();: 요소를 추가할 때 많이 사용한다, 부모 노드의 자식 노드 리스트 중 마지막 자식으로 덧붗인다, 요소를 만든다, 문서를 만들어버릴 수도 있다 */
+        grayBar.appendChild(makeSection);
+        /* *li로 매번 하드코딩하긴 힘들다, 자동화로 만들어 주도록하는 패턴을 챙기기 */
+      }
+    });
+  </script>
+</body>
+</html>
