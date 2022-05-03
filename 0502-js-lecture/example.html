@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var arr = [];
+var speed = 100;
+var mainContainer = document.getElementById("main-container")
+
+var tween = function(e, f, g){
+var tl = new TimelineMax()
+tl.to(e, 1, { x: f, y: g, autoAlpha: 0, ease: Power0.easeNone })
+  .call(function(){
+   mainContainer.removeChild(e);
+})
+return tl
+}
+
+setInterval(function(){
+  var x = (100)*Math.random();
+  var y = (100)*Math.random();
+  console.log(x)
+  var particle = document.createElement("DIV");
+  particle.style.height = '50px';
+  particle.style.width = '50px';
+  particle.style.backgroundColor = "#"+((1<<24)*Math.random()|0).toString(16)
+  particle.style.borderRadius = "50% 50%";
+  particle.style.position = 'absolute';
+  particle.id = "particle";
+  mainContainer.appendChild(particle);
+  tween(particle, (x*4), (y*4))
+  
+  arr.push(particle)
+  console.log(arr)
+  if(arr.length == 10){
+    arr.length = 0;
+  }
+}, speed);
+
+
+
+  </script>
+</body>
+</html>

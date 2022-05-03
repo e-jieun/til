@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+//     const root = document.getElementById('root');
+//     console.dir(root);
+//     /* offsetHeight: 21
+// offsetLeft: 8
+// offsetParent: body
+// offsetTop: 8
+// offsetWidth: 972 */
+
+// // root.innerHTML[0] = '겜';
+// root.innerHTML = '겜';
+// // set은 배열로 하지 못함
+// let a = '겜';
+// let b = '블';
+// let c = '러';
+// let originData = '텀';
+// let text = originData+b+c;
+// root.textContent = text;
+// // text[0] = '겜';
+// text = a+b+c;
+// console.log(text[0]);
+// console.log(root.innerHTML[0]);
+
+
+    const root = document.getElementById('root');
+    let inner = '나는 지금 코딩하고 있다';
+    root.textContent = inner;
+    root.style.color = '#fff';
+
+    // question
+    // root.addEventListener('click', function(){
+    //   // 클릭을 하면 실행한다
+    //   // root.style.color = '#000';
+    //   // 클릭하면 콘솔을 찍는다
+    //   console.log(root.style.color);
+
+    //   let clickValue = 1;
+    //   let black = 'rgb(0, 0, 0)';
+    //   let white = 'rgb(255, 255, 255)';
+    //   // clickValue === 1
+    //   if(clickValue === 1){
+    //     // 띄어쓰기도 빈칸도 똑같이 해줘야 함
+    //     root.style.color = black;
+    //     console.log(root.style.color);
+    //     clickValue--;
+    //     // console.log(typeof clickValue);
+    //     console.log(clickValue);
+    //   // clickValue !== 1 === clickValue === 0
+    //   } else{
+    //     root.style.color = white;
+    //     console.log(root.style.color);
+    //     clickValue++;
+    //   }
+
+    // });
+
+    // answer
+    // let current = 0;  // 현재
+    // 사용하려고 만드는 변수를 떠올리는 것이 굉장히 어렵다
+    /* 1. 눈에 안 보이니까 -> console로 확인해버릇하는 것
+    2. if(){}는 뭔가 비교를 할 때 많이 쓴다 => 판단하는 메인 제어문
+    === 비교를 할 값을 잘 만드는 것이 프로그래밍 실력
+    *연습 포인트 -> 상태제어 === 자꾸 판단을 해보는 것
+    알고리즘 연습 = 프로그래밍의 기본기 중의 하나(어떻게 사용하느냐)
+     */
+    // let current = 0;
+    // root.addEventListener('click', function(){
+    //   // console.log('hello');
+    //   current++;
+    //   // console.log(typeof current);
+    //   // false: 0, true: 1
+    //   if(current === 1){
+    //     console.log(current);
+    //     console.log('야호!');
+    //     root.style.color = 'rgb(0, 0, 0)';
+    //     current--;
+    //   }else{
+    //     console.log(current);
+    //     console.log('쭈굴쭈굴');
+    //     root.style.color = 'rgb(25, 25, 25)';
+    //     current++;
+    //   }
+    // });
+
+    // 눈에 안보이는 숫자를 증가시키거나 감소시키는 연습
+    // 
+    // root.addEventListener('wheel', function(){
+    //   root.style.color = '#000';
+    //   console.log(typeof current);
+    //   // 30과 같아지면
+    //   if(current === 30){
+    //     // 줄어들게 한다
+    //     // ?근데 왜 1밖에 안 줄어들까?
+    //     // 계속 줄어들도록 할 수는 없는 걸까?
+    //     current--;
+    //     root.textContent = current;
+    //     console.log(current);
+    //   } else{
+    //     current++;
+    //     root.textContent = current;
+    //   }
+
+      // answer
+    //   let current = 0;
+    //   root.addEventListener('click', function(){
+    //     if(current < 30){
+    //       current++;
+    //       root.textContent = current;
+    //       console.log(current);
+    //     } else{
+    //       current--;
+    //       console.log(current);
+    //     }
+
+    //   });
+    // });
+    
+  </script>
+</body>
+</html>
