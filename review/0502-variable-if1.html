@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    const root = document.getElementById('root');
+    console.log(root);
+    root.style.fontSize = '5rem';
+    // isStatus를 선언하고 값을 boolean값 true로 지정한다
+    let isStatus = true;
+    // 변수 current 로 선언하고 값을 숫자 0으로 대입한다
+    let current = 0;
+    // root의 textContent를 current 값으로 대입해준다 
+    root.textContent = current;
+
+    // root에 클릭 이벤트를 적용시킨다
+    root.addEventListener('click', function(){
+      // !숫자를 0부터 10까지 카운트업해주는 부분
+      // 만약 isStatus 값이 true인 것이 참이면
+      if(isStatus === true){
+        // 클릭이라고 콘솔에 기록해
+        console.log('click');
+        // 그리고 나서 current 값에 1을 더해줘
+        current++;
+        // 콘솔에 current 값을 기록한다
+        console.log(current);
+        // root의 textContent에 current 값을 대입한다
+        root.textContent = current;
+        // 만약 current가 10보다 크거나 같은 것이 참이면
+        if(current >= 10){
+          // isStatus 값을 false로 재할당한다
+          isStatus = false;
+        }
+      // !숫자를 10부터 0까지 카운트다운 해주는 부분
+      // 만약 isStatus의 값이 true가 아닌 것(false)이 참이면
+      } else{
+        // 콘솔을 overclick이라고 기록해준다
+        console.log('overclick');
+        // 그리고 나서 current 값을 1 빼준다
+        current--;
+        // root의 textContent에 current 값을 대입
+        root.textContent = current;
+        // 만약 current가 0보다 작거나 같은 것이 참이면
+        if(current <= 0){
+          // isStatus의 값으로 true를 재할당해준다
+          isStatus = true;
+        }
+      }
+    });
+
+  </script>
+</body>
+</html>
