@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 버튼 a를 누르면 나타났다 사라지는 메뉴를 만들어보자 -->
+  <button>A</button>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <script>
+    // ul 식별
+    const ul = document.querySelector('ul');
+    console.log(ul);
+    const li = ul.children;
+    console.log(li);
+
+    let textArr = ['good morning', 'good afternoon', 'good night'];
+    // li[i].textContent에 textArr[i] 값 대입
+    for(let i = 0; i < li.length; i++){
+      li[i].textContent = textArr[i];
+    }
+
+    // button 식별
+    const clickBtn = document.querySelector('button');
+    console.log(clickBtn);
+
+    ul.style.display = 'none';
+    
+    let clickValue = true;
+
+    // clickBtn에 이벤트 생성
+    clickBtn.addEventListener('click', function(){
+      // console.log('click');
+      // 만약 clickValue === true가 참이면
+      if(clickValue === true){
+        console.log('true');
+        ul.style.display = 'none';
+        clickValue = false;
+      // clickValue === false
+      // 만약 clickValue !== true가 참이면
+      } else{
+        console.log('false');
+        ul.style.display = 'block';
+        clickValue = true;
+      }
+
+    });
+  </script>
+</body>
+</html>
