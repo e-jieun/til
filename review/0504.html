@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 클릭하면 55번 문자열 hello가 출력 -->
+  <button class="click-button">click</button>
+  
+  <script>
+    // classname으로 불러오는 식별 메서드의 특징 => 배열이 리턴값이다
+    // !내장 함수는 리턴값을 꼭 확인한다
+
+    const clickBtn = document.  getElementsByClassName('click-button');
+    // 콘솔을 찍어보면 배열이 나온다 === getelementsbyclassname은 배열이 리턴값
+    console.log(clickBtn);
+
+    // let stringValueArr = ['h', 'e', 'l', 'l', 'o'];
+    let stringValue = 'hello';
+    console.log(stringValue);
+    // 반복되는 무언가를 하려고 할 때는 반복문부터 생각, 알고리즘 자체 본체부터 생각을 하자
+
+    clickBtn[0].addEventListener('click', function(){
+      // console.log('yahoo');
+      /* 프로그래밍적으로 해결할 부분, 특정 횟수에만큼 뭔가 실행이 되어야 한다
+    디자인 측면에서 DOM API -> .addEventListener(); */
+      for(let i = 0; i < 55; i++){
+        console.log(stringValue);
+        // textDiv는 문서에 div를 생성해주는 메서드인 createElement로 생성해주었다
+        const textDiv = document.createElement('div');
+        // 문서의 자식요소로 div요소들을 추가
+        document.body.appendChild(textDiv);
+        // 문서의 자식요소인 div에 stringValue 값을 대입
+        textDiv.innerHTML = stringValue;
+      }
+    });
+  </script>
+</body>
+</html>
