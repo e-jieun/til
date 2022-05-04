@@ -15,6 +15,7 @@
   <button>B</button>
   <div></div>
   <script>
+    // 시도 2.
     const clickBtn = document.getElementsByTagName('button');
     console.log(clickBtn);
     console.log(clickBtn[0]);
@@ -25,25 +26,70 @@
     const btnB = clickBtn[1];
     const div = document.querySelector('div');
     console.log(div);
-    let current = 0;
-    
-    btnA.addEventListener('click', function(){
-      // console.log('work');
-      current++;
-
-      console.log(current);
-      if(current%2 === 1){
-        div.textContent = '똑';
-        current++;
-        console.log(current);
-      } else{
-        div.textContent = '딱';
-        current--;
-      }
-    });
+    // 불리언으로 값을 줘도 된다
+    // 불리언 값으로 true, false를 주면
+    // let current = true;
+    // // button a와 button b에서 모두 사용하려면 타이머 변수를 전역변수로 선언해주면 된다!
+    // let timer;
+    // // button a를 클릭
+    // btnA.addEventListener('click', function(){
+    //   timer = setInterval(function(){
+    //     current++;
+    //     // 만약 홀수면
+    //     if(current === true){
+    //       div.textContent = '똑';
+    //       console.log(current);
+    //       current = false;
+    //       // 홀수가 아닌 짝수면
+    //     } else{
+    //       div.textContent = '딱';
+    //       console.log(current);
+    //       current = true;
+    //     }
+    //   }, 1000)
+    // });
+    // button b
     btnB.addEventListener('click', function(){
+
       clearInterval(timer);
     });
+    // 시도 3.
+    current = 0;
+    // button a와 button b에서 모두 사용하려면 타이머 변수를 전역변수로 선언해주면 된다!
+    let timer;
+    // button a를 클릭
+    btnA.addEventListener('click', function(){
+      timer = setInterval(function(){
+        current++;
+        // 만약 홀수면
+        if(current%2 === 1){
+          div.textContent = '똑';
+          console.log(current+'똑');
+          // 홀수가 아닌 짝수면
+        } else{
+          div.textContent = '딱';
+          console.log(current+'딱');
+          // current = true;
+          // 딱이 15
+          if(current === 225){
+            console.log('흰색');
+            document.body.style.backgroundColor = `rgb(${current}, ${current}, ${current})`;
+            clearInterval(timer);
+          } else{
+            console.log('여기부터 색 변화');
+            document.body.style.backgroundColor = `rgb(${current}, ${current}, ${current})`;
+            // clearInterval(timer);
+          } 
+        }
+      }, 60)
+    });
+    // button b
+    btnB.addEventListener('click', function(){
+      clearInterval(timer);
+    }); 
+
+    // ---------------------------------------------------------------------
+    // 시도 1.
     // let timer = setInterval(function(){
     //   console.log(current);
     //   div.textContent = '똑';

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="alarm">따르릉</h1>
+  <button id="a">a클릭</button>
+  <button id="b">b클릭</button>
+
+  <script>
+    // !똑, 딱과 같이 계속 사용할 값들을 변수로 초기화 해주는 것 방법
+    let a = '똑';
+    let b = '딱';
+
+    // console.log(a);
+    // console.log(b);
+    // !boolean 값의 핸들링으로 똑딱 타이머의 값 핸들링한다
+    let isStatus = true;
+    let current = 0;
+
+    // !querySelector를 사용했기 때문에 아이디를 나타내는 #을 꼭 붙여줘야 함
+    const aBtn = document.querySelector('#a');
+    const bBtn = document.querySelector('#b');
+    // !적용해줄 알람 변수를 식별해준다
+    const alarm = document.querySelector('#alarm');
+    console.dir(alarm);
+
+    aBtn.addEventListener('click', function(){
+      const timer = setInterval(function(){
+        if(isStatus === true){
+          alarm.textContent = a;
+          console.log(a);
+          isStatus = false;
+        } else{
+          alarm.textContent = b;
+          console.log(b);
+          isStatus = true;
+          current++;
+          // !current는 숫자니까 단위를 붙여줘야 값이 대입된다, 단위 붙이는 것 잊고 작동 안된다고 생각하지 않기!
+          alarm.style.margin = current+'px';
+          console.log(alarm);
+          console.log(`똑딱이 횟수는 ${current}`);
+        }
+        // if(current > 10){
+        //   clearInterval(timer);
+        // }
+        // ---------------------------------------------
+        // !나는 전역 변수를 사용했어서 let timer로 scope 바깥에 변수를 선언만 해줬었다
+        // 지역 변수를 사용했기 때문에 
+        // scope 바깥으로 나가면 clearInterval이 바깥으로 나가면 timer 변수가 적용이 안될 것
+        // !.addEventListener();도 이 메서드 안의 클릭 이벤트 메서드로 작동할 수 있다 === 그렇게 되면 지역 변수로도 클릭 이벤트 메서드를 작동하게 할 수 있다 
+        bBtn.addEventListener('click', function(){
+          clearInterval(timer);  
+        });
+        // ---------------------------------------------
+      }, 60);
+    });
+
+
+    // 메인 알고리즘
+    // if(isStatus === true){
+    //   console.log(a);
+    //   isStatus = false;
+    //   console.log(isStatus);
+    // } else{
+    //   console.log(b); //똑
+    // }
+  </script>
+</body>
+</html>
