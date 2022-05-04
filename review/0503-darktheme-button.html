@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- a버튼을 누르면 다크모드, b버튼을 누르면 라이트 모드 -->
+  <div id="root">
+    <button id="a">A</button>
+    <button id="b">B</button>
+  </div>
+  <script>
+    const root = document.getElementById('root');
+    console.log(root);
+    const btnA = document.getElementById('a');
+    console.log(btnA);
+    const btnB = document.getElementById('b');
+    console.log(btnB);
+
+    // viewWidth, viewHeight
+    const viewWidth = window.innerWidth;
+    const viewHeight = window.innerHeight;
+    // document.body.style.width = viewWidth;
+    // document.body.style.height = viewHeight;
+    document.body.style.margin = 0;
+    document.body.style.padding = 0;
+
+    // root style
+    root.style.width = viewWidth+'px';
+    root.style.display = 'flex';
+    root.style.alignItems = 'center';
+    root.style.justifyContent = 'center';
+    root.style.flexDirection = 'column';
+    // ?왜 여기서 viewHeight이 적용이 안된다
+    // !아.... 또 단위를 안 붙여줬다.... 어쩐지 값이 적용이 안됐더라
+    root.style.height = viewHeight+'px';
+    // root.style.backgroundColor = '#c4c4c4';
+    console.log(root);
+
+    const text = document.createElement('h1');
+    console.log(text);
+    root.appendChild(text);
+    text.innerHTML = '안녕 클레오파트라';
+
+    let click = true;
+
+    btnA.addEventListener('click', function(){
+      console.log('darkmode');
+      root.style.backgroundColor = '#000';
+      root.style.transition = '2s';
+      text.style.color = '#fff';
+      text.style.transition = '2s';
+    });
+    btnB.addEventListener('click', function(){
+      console.log('lightmode');
+      root.style.backgroundColor = '#e3e3e3';
+      root.style.transition = '2s';
+      text.style.color = '#000';
+      text.style.transition = '2s';
+    });
+
+  </script>
+</body>
+</html>
