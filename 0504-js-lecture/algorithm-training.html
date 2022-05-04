@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <!-- 1. A버튼을 클릭하면 "똑"이라는 단어가 나타난다.
+    2. 1초뒤에 "딱"이라는 단어가 나타난다.
+    3. 2초뒤에 "똑" 이라는 단어가 나타난다.
+    똑-> 딱-> 똑-> 딱 -->
+  <button>A</button>
+  <button>B</button>
+  <div></div>
+  <script>
+    const clickBtn = document.getElementsByTagName('button');
+    console.log(clickBtn);
+    console.log(clickBtn[0]);
+    console.log(clickBtn[1]);
+    // button a
+    const btnA = clickBtn[0];
+    // button b
+    const btnB = clickBtn[1];
+    const div = document.querySelector('div');
+    console.log(div);
+    let current = 0;
+    
+    btnA.addEventListener('click', function(){
+      // console.log('work');
+      current++;
+
+      console.log(current);
+      if(current%2 === 1){
+        div.textContent = '똑';
+        current++;
+        console.log(current);
+      } else{
+        div.textContent = '딱';
+        current--;
+      }
+    });
+    btnB.addEventListener('click', function(){
+      clearInterval(timer);
+    });
+    // let timer = setInterval(function(){
+    //   console.log(current);
+    //   div.textContent = '똑';
+    // }, 1000);
+    // timer = setInterval(function(){
+
+    // }, 2000);
+  
+  </script>
+</body>
+</html>

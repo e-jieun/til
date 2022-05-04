@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button class="click-button">click</button>
+  <script>
+    // 프로그래밍적인 알고리즘을 짜주는 것이 우선
+    // 메서드이기 때문에 리턴값 확인 필수
+    const clickBtn = document.getElementsByClassName('click-button');
+    console.log(clickBtn);  // 0번이라는 배열 방식으로 가져온다 === 배열을 파악한다
+
+    // 문자열도 배열이다
+    let stringValue = 'hello';
+
+    clickBtn[0].addEventListener('click', function(){
+      console.log('yahoo');
+      // 반복문부터 생각하자!
+      for(let i = 1; i<=55; i++){
+        console.log(stringValue[0]);
+      }
+      });
+    /* 프로그래밍적으로 해결할 부분, 특정 횟수에만큼 뭔가 실행이 되어야 한다
+    디자인 측면에서 DOM API -> .addEventListener(); */
+  </script>
+</body>
+</html>
