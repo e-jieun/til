@@ -19,5 +19,5 @@ function b1 (first, second){
   }
 }
 
-b1('babo', 1);  //  error
-console.log(b1('babo', 1)); //  실행 테스트용
+b1('babo', 1);  //  error 혹은 실행 테스트용
+console.log(b1('babo', 1)); // 리턴값이 실행
