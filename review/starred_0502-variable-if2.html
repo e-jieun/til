@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>
+    document.body.style.margin = 0;
+    document.body.style.padding = 0;
+
+    const root = document.getElementById('root');
+    console.dir(root);
+
+    let sectionArr = ['피카츄', '라이츄', '파이리', '꼬부기'];
+    console.log(sectionArr);
+
+    let sectionColor = ['salmon', 'darkgray', 'darkblue', 'darkcyan'];
+    console.log(sectionColor);
+
+    // 윈도우의 넓이값, 높이값을 뷰포트 크기를 나타내는 변수로 다시 식별해준 부분
+    const viewWidth = window.innerWidth;
+    console.log(viewWidth);
+    const viewHeight = window.innerHeight;
+    console.log(viewHeight);
+
+    // root의 넓이값, 높이값을 뷰포트에 보여지는 넓이값, 높이값으로 설정
+    // !viewWidth, viewHeight는 타입이 숫자이므로 단위를 붙여줘야 작동이 된다
+    root.style.width = `${viewWidth}px`;
+    root.style.height = `${viewHeight}px`;
+    root.style.backgroundColor = `#c4c4c4`;
+    console.log(root);
+
+    let clickValue = 0;
+    // root에 적용할 클릭 이벤트를 생성해준다
+    root.addEventListener('click', function(){
+      console.log('clicked');
+      // sectionArr을 차례대로 sectionArr의 길이만큼 요소를 생성해서 텍스트로 집어넣어준다
+      for(let i = 0; i < sectionArr.length; i++){
+        if(clickValue === i){
+          // 문서에 section 요소를 생성해준다
+          const makeSection = document.createElement('section');
+          console.log(makeSection);
+          // console.log(sectionArr.length);
+          // root의 자식요소로 section을 덧붙인다
+          root.appendChild(makeSection);
+          // console.log(root.children);
+          // section의 textContent에 sectionArr의 i번의 값을 대입해준다
+          makeSection.textContent = sectionArr[i];
+          console.log(i);
+          // 배경색도 배열에서 가져와서 바꿔주자
+          root.style.backgroundColor = sectionColor[i];
+        }
+      }
+      // !이 부분에 핸들링하는 값을 넣어주면 for문 안에서 반복돼 한꺼번에 값을 찍지 않고 for문을 빠져나온 다음 값을 1 더해줘서 잘 작동하게 된다
+      clickValue++;
+    });
+  </script>
+</body>
+</html>
