@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- a버튼 클릭할 때마다 h1 태그에 배열의 포켓몬스터들이 하나씩 나타나기
+  마지막 포켓몬스터가 나온다음 '포켓몬을 다 모았다' 텍스트가 나타나게 만든다 -->
+  <div id="root">
+    <button>A</button>
+  </div>
+
+  <script>
+    // #root를 식별
+    const root = document.getElementById('root');
+    console.dir(root);
+    // 포켓몬 배열 선언, 할당
+    const practics = ["피카츄", "라이츄", "파이리", "꼬부기", "버터풀", "야도란", "피죤투", "또가스"];
+    console.log(practics);
+
+    // button 식별
+    const btnA = document.querySelector('button');
+    console.log(btnA);
+
+    // 배열을 순서대로 꺼내와주기 위해서 변수 click을 0으로 초기화
+    let click = 0;
+    // btnA에 이벤트 메서드로 이벤트를 생성
+    btnA.addEventListener('click', function(){
+      // console.log('hi');
+      // 배열을 반복해서 출력해줘야 하니까 for문을 활용하자
+      for(let i = 0; i < practics.length; i++){
+        // console.log(practics[i]);
+        // 조건문을 넣어서 순서대로하나씩 출력되도록 해준다
+        // 만약 클릭과 인덱스가 같은 게 참이면
+        if(click === i){
+          // console.log(click);
+          // 문서에 h1 요소를 생성해준다
+          const pokemon = document.createElement('h1');
+          // 자식요소로 할당
+          // console.log(pokemon);
+          root.appendChild(pokemon);
+          // console.log(root.children);
+          pokemon.textContent = practics[i];
+
+          if(click === practics.length-1){
+            console.log('finished');
+            pokemon.textContent = '포켓몬이 다 모아졌다!';
+          }
+        }
+      }
+      click++;
+    });
+
+  </script>
+</body>
+</html>
