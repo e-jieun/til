@@ -39,7 +39,7 @@
         let change = setInterval(function(){
           if(isStatus === true){
             if(backgroundColor <= 255){
-              backgroundColor += 10;
+              backgroundColor = Math.random()*255;  // !랜덤 숫자도 들어갈 수 있구나
               root.style.backgroundColor = `rgb(${backgroundColor}, ${backgroundColor}, ${backgroundColor})`;
               console.log(backgroundColor);
             }else{
