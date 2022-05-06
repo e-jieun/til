@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <!-- !구조상 형제관계여야하는데 부자관계로 구성해서 버튼이 root 칸 안에 들어가 있었음 -->
+  <button>click</button>
+  <script>
+    // opacity가 변할 부분
+    const root = document.getElementById('root');
+    console.log(root);
+    root.style.width = '100px';
+    root.style.height = '100px';
+    root.style.backgroundColor = '#333';
+
+    const clickBtn = document.querySelector('button');
+    console.log(clickBtn);
+
+    // 현재 상태를 변수 isStatus를 true로 초기화한다 
+    
+    let isStatus = true;
+    // opacity를 조절해줄 변수
+    let opacityValue = 0;
+    // !클릭 이벤트 안에서 두 가지 조건문을 반복해서 실행해주려면 클릭값을 온 오프 해줘야 하는데, 클릭값을 핸들링해줄 변수를 설정해주지 않아서 반복할 수가 없었다
+    // 클릭 이벤트를 핸들링해줄 변수를 boolean값 true로 초기화 해준다
+    let clickValue = true;
+
+    let interval = 100;
+    clickBtn.addEventListener('click', function(){
+      // fadeout
+      // !이 부분에 opacityValue를 1로 주어야 setInterval이 돌아가는 동안 값이 1로 초기화되지 않고 계속해서 연산이 된다
+      // ! 클릭하자마자 값을 1로 주는 것 => 그러면 변수를 만들어서 조건식을 달아준 다음에 opacityValue를 1이나 0으로 줄 수 있도록 해주면 될 것 
+      // !click값을 핸들링해주는 변수를 만들고 
+      // 만약 클릭값이 true인 것이 참이면
+      if(clickValue === true){
+        // opacity값은 1로 재할당
+        opacityValue = 1;
+        // 타이머 변수를 선언하고 setInterval 코어 메서드를 대입해준다
+        let timer = setInterval(function(){
+          // 현재상태값이 true이면
+          if(isStatus === true){
+            console.log(isStatus);
+            // opacity값이 0보다 크거나 같다면
+            if(opacityValue >= 0){
+              // opacity값에 -0.1을 해준 값을 대입해준다
+              opacityValue = opacityValue-0.1;
+              // root의 opacity에 opacityValue값을 대입해준다
+              root.style.opacity = opacityValue;
+              console.log(opacityValue);
+            // opacityValue가 0보다 크거나 작은 것이 참이 아니면
+            } else{
+              // clearInterval로 timer 종료
+              clearInterval(timer);
+              // !clearInterval을 실행하고 나서 다시 변수의 값을 재할당해서 클릭 이벤트가 반복되도록 만들어준다
+              // 종료하고 나서 clickValue, isStatus를 false로 재할당해준다
+              // => fadein의 조건식을 다음 클릭시 실행해주기 위해서
+              clickValue = false;
+              isStatus = false;
+            }
+          }
+        }, interval);
+      // fadein할 부분
+      // if(clickValue !== true) === clickValue === false
+      } else{
+        // opacity값을 0으로 재할당해준다
+        opacityValue = 0;
+        // 타이머 변수에 setInterval 메서드를 대입해준다
+        timer = setInterval(function(){
+          // 만약 현재상태값이 false면
+          if(isStatus === false){
+            console.log(isStatus);  //false나옴
+            // 만약 opacity값이 1보다 작거나 같으면 === 1이상의 수는 안 나오도록 해줘서 &&, ||를 사용해주지 않아도 된다
+            if(opacityValue <= 1){
+              // opacity값에 +0.1 해준 값을 opacity값으로 대입해준다
+              opacityValue = opacityValue+0.1;
+              console.log(opacityValue);
+              // 그리고 root의 opacity속성에 opacity값을 대입해준다
+              root.style.opacity = opacityValue;
+              console.log(opacityValue);
+            // 만약 opacity값이 1보다 작거나 같지 않은 것이 참이면
+            } else{
+              // clearInterval 메서드를 사용해서 setInterval이 대입된 변수 timer(함수 리터럴)를 종료시킨다 
+              clearInterval(timer);
+              // 종료시키고나서 clickValue, isStatus의 값을 true로 재할당해서 => fadeout의 조건식을 다음 클릭시 실행할 수 있도록 해준다
+              clickValue = true;
+              isStatus = true;
+            }
+          }
+        }, interval);
+      }
+    });
+  </script>
+</body>
+</html>

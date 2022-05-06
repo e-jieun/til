@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <button id="click-button">click</button>
+  <script>
+    const root = document.getElementById('root');
+    // console.log(root);
+    root.style.width = '100px';
+    root.style.height = '100px';
+    root.style.backgroundColor = '#333';
+
+    const clickBtn = document.getElementById('click-button');
+
+    // !클릭할 때마다 불린 값이 왔다갔다 해야 함, 수동으로 조절해주면 잘 동작한다
+    let isStatus = true;
+    let opacityValue = 0;
+    root.style.opacity = opacityValue;
+
+    // 1.
+    clickBtn.addEventListener('click', function(){
+      // alert('test');
+      // click했을 때 재할당해줌
+      if(isStatus === true){
+        opacityValue = 1;
+        // fadeout
+        let fadeout = setInterval(function(){
+            console.log('true'+opacityValue);
+            // opacityValue가 1보다 작을 때까지
+            // !0에서 멈춰야하는데 안 멈춘다
+            if(opacityValue >= 0){
+              opacityValue = opacityValue-0.1;
+              root.style.opacity = opacityValue;
+              // console.log(opacityValue);
+            } else{
+              clearInterval(fadeout);
+            }
+          }, 1000);
+          isStatus === false;
+        // if(isStatus !== true)
+      } else{
+        opacityValue = 0;
+        // fadeout
+        let fadein = setInterval(function(){
+            console.log('false'+opacityValue);
+            // opacityValue가 1보다 작을 때까지
+            if(opacityValue <= 1){
+              opacityValue = opacityValue+0.1;
+              root.style.opacity = opacityValue;
+              // console.log(opacityValue);
+            } else{
+              clearInterval(fadein);
+            }
+          }, 1000);
+          isStatus === true;
+      }
+
+      // 2. setinterval하기 전에 먼저 테스트 하기
+    //   let fadein = setInterval(function(){
+    //     if(isStatus === true){
+    //       opacityValue = 0;
+    //       // 0으로 재할당하고, 계속 0.1씩 늘어나야 한다
+    //       if(opacityValue < 1){
+    //         // 0.1씩 증가하도록
+    //         opacityValue = opacityValue+0.1;
+    //         root.style.opacity = opacityValue;
+    //         console.log(opacityValue);
+    //       }
+    //     } else{
+    //       clearInterval(fadein);
+    //       isStatus = false;
+    //     }
+    //     // // fadeout
+    //     // if(isStatus === false){
+          
+    //     //   opacityValue -= 0.1;
+    //     //   console.log(opacityValue);
+    //     //   root.style.opacity = opacityValue;
+    //     // } else{
+    //     //   clearInterval(fadein);
+    //     //   isStatus = false;
+    //     // }
+    //   }, 1000);
+    });
+
+  </script>
+</body>
+</html>
