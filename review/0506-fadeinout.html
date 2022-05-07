@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <button>click</button>
+  <script>
+    // #root 식별
+    const root = document.getElementById('root');
+    console.log(root);
+    // root style
+    root.setAttribute('style','width: 100px; height: 100px; background-color: #000;');
+
+    // button 식별
+    // console.log(document.body.children);
+    const clickBtn = document.body.children[1];
+    console.log(clickBtn);
+
+    let clickValue = true;
+    let isStatus = true;
+    let opacityValue = 0;
+    let interval = 16;
+
+    // 클릭을 하면 생기는 이벤트이니까 클릭 이벤트
+    clickBtn.addEventListener('click', function(){
+      // console.log('click');
+      // fade-in
+      if(clickValue === true){
+        opacityValue = 0;
+        let fadein = setInterval(function(){
+        if(opacityValue < 1){
+            opacityValue = opacityValue+0.1;
+            root.style.opacity = opacityValue;
+            console.log(opacityValue);
+            
+            // 1보다 크면 멈춰야한다
+          } else{
+            clearInterval(fadein);
+            clickValue = false;
+          }
+        }, interval);
+        // clickValue !== false === clickValue === false
+      } else{
+        opacityValue = 1;
+        let fadeout = setInterval(function(){
+          if(opacityValue >= 0){
+            opacityValue -= 0.1;
+            root.style.opacity = opacityValue;
+            console.log(opacityValue);
+          } else{
+            clearInterval(fadeout);
+            clickValue = true;
+          }  
+        }, interval);
+      }
+    })
+  </script>
+</body>
+</html>
