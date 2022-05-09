@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li{
+      width: 0px;
+      height: 0px;
+      transition: 2s;
+    }
+    .change{
+      display: block;
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      position: absolute;
+      margin-left: 10vh;
+      transition: 2s;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <ul id="item">
+      <li></li>
+    </ul>
+  </div>
+  <script>
+    // #root
+    const root = document.getElementById('root');
+    console.log(root);
+    // item
+    const item = document.getElementById('item'); 
+    console.log(item);
+    // li 식별
+    const li = document.querySelector('li');
+    console.log(li);
+    // li style
+    
+
+    item.addEventListener('click', function(event){
+      // console.log('click');
+      console.dir(event.target);  //li
+      event.target.style.color = 'blue';
+
+      // boolean 값을 가진 변수로 핸들링하는 것보다 클래스에 저장된 스타일을 더해주고 빼주는 식으로 반복할 수 있는 점이 간편한 것이 장점
+
+      // 만약 클래스리스트에 .change가 들어있으면
+      if(event.target.classList.contains('change')){
+        console.log('클래스에 change가 들어 있음')
+        event.target.textContent = 'open';
+        // event.target.style.display = 'none';
+        // 클래스 'change'를 지워준다
+        event.target.classList.remove('change');
+        // 클래스리스트에 .change가 없으면
+      } else{
+        console.log('change 클래스 없음');
+        // 클래스 리스트에 .change를 더해줌
+        event.target.classList.add('change');
+        event.target.textContent = 'close';
+        event.target.style.display = 'block';
+      }
+    });
+    // 
+    // https://github.com/kongukjae/web-C-lecture/blob/main/%5B08%5Dweb-design-example/web-design-example-7/web-design-example-7.html
+
+  </script>
+</body>
+</html>

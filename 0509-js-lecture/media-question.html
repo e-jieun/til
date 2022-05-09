@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--  -->
+  <script>
+    // body 식별
+    let body = document.body;
+    console.log(body);
+    // body style
+    body.setAttribute('style','display: flex; align-items: center; justify-content: center;');
+
+    // create div
+    let textDiv = document.createElement('div');
+    // 
+    textDiv.setAttribute('style','width: 50vw; height: 50vw; border: 1px solid black; display: flex; align-items: center; justify-content: center;');
+    body.appendChild(textDiv);
+
+    let slideDiv = document.createElement('section');
+    // console.log(slideDiv);
+    // slideDiv style
+    slideDiv.setAttribute('style','width: 100px; height: 100px; background-color: #ccc;'); 
+    
+    console.log(textDiv);
+    console.log(textDiv.style);
+    
+    // 가로폭에 따라 나올 글자 -> 모바일, 태블릿, pc
+    let textArr = ['손만충', '장준형', '임성민'];
+    // textDiv.textContent
+
+    // 모바일
+    if(body.clientWidth < 450){
+      textDiv.textContent = textArr[0];
+      console.log(body.clientWidth+textArr[0]);
+    // 태블릿
+    } else if(body.clientWidth < 1024){ //굳이 두 개의 조건식이 없어도 되는 부분이었다
+      textDiv.textContent = textArr[1];
+      console.log(body.clientWidth+textArr[1]);
+    // PC
+    } else{
+      textDiv.textContent = textArr[2];
+      console.log(body.clientWidth+textArr[2]);
+    }
+  </script>
+</body>
+</html>

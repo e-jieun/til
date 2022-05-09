@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // innerwidth,height(뷰포트 기준)/outerwidth,height(브라우저 창 기준)와 같은 것도 있음
+    // clientWidth: 사용자 가로폭, 뷰포트 가로폭
+    console.log(document.body.clientWidth);
+
+    // @media => 브라우저 창의 viewport라는 값을 css에서 쓰게끔 만든 미디어 쿼리
+    // => css 알고리즘 안에는 if문이 여러개 들어있을 것
+
+    // document.body를 변수로 식별해 refactoring
+    let bodyValue = document.body;
+    // 색도 배열에 담을 수 있음
+    let bgColorArr = ['blue', 'salmon', 'black'];
+
+    // 미디어 쿼리를 사용해 제어
+    if(bodyValue.clientWidth > 768){
+      // 값을 할당
+      bodyValue.style.backgroundColor = bgColorArr[2];
+    // if문의 조건식을 추가해주고 싶을 때 else if()를 사용해서 조건식을 추가해줄 수 있음 
+    } else if(bodyValue.clientWidth < 450){
+      bodyValue.style.backgroundColor = bgColorArr[0];
+    } else{
+      bodyValue.style.backgroundColor = bgColorArr[1];
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul{
+      border: 1px solid blue;
+    }
+    li{
+      background-color: brown;
+      color: #fff;
+    }
+    li:hover{
+      background-color: beige;
+      color: blue;
+    }
+    .on{
+      font-size: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <ul id="menu">
+    <li class="items">items-1</li>
+    <li class="items">items-2</li>
+    <li class="items">items-3</li>
+    <li class="items">items-4</li>
+    <li class="items">items-5</li>
+    <li class="items">items-6</li>
+    <li class="items">items-7</li>
+    <li class="items">items-8</li>
+    <li class="items">items-9</li>
+    <li class="items">items-10</li>
+  </ul>
+
+  <script>
+    // https://developer.mozilla.org/ko/docs/Web/API/Event
+    
+    // ul 식별
+    // 컨테이너만 있다면 자식에 있는 무언가를 바꿀 수 있음
+    const ul = document.querySelector('#menu');
+    console.log(ul);
+
+    // 이벤트 객체
+    ul.addEventListener('click', function(event){
+      // alert('hello');
+      // 이벤트 객체 -> 콜백 함수 안 매개변수 첫번째
+      // console.log(event.target); //target: li.items -> 이벤트 발생한 주체를 찾아줌
+      console.dir(event.target); 
+      event.target.style.color = 'red';
+      event.target.style.backgroundColor = '#ddd';
+      // .addEventListener('type', function(event(first parameter 자리)){});
+      // 이벤트 객체: 클릭을 찍은 놈
+      // event => e
+      // classList: DOMTokenList(1)
+      // 0: "items"
+      // length: 1
+      // value: "items"
+    
+      // 가지고 있는지를 판별하는 메서드 .contains()
+      // 있으면 빼줘
+      if(event.target.classList.contains('on')){
+        console.log('클래스에 items라는 친구가 들어있음');
+
+        /* !굉장히 많이 사용하는 디자인 패턴! */ 
+        // class에 on이라는 글자가 붙음, 더해줄래 => 클래스를 붙여주는 행위 -> 단점: 직관적이지 않음
+        // => 간접제어
+        // 1. 이벤트, 2. 클래스로 만들어두고 간접제어
+        /* 클래스를 확인하고 클래스를 붙이는 방법을 배움 */
+        event.target.classList.remove('on');
+      } else{
+        // 없으면 넣어줘
+        console.log('그런 클래스가 없음')
+        event.target.classList.add('on');
+      }
+    });
+    // classList의 메서드 중에는 하위로 contains()가 있다 => 반환값 불리언
+    /* remove(), add() */ 
+    // 간편하지만 복잡한 건 안된다 => 1차적인 인터랙션 => 팝업창
+  </script>
+</body>
+</html>
