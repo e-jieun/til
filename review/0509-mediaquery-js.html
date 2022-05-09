@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- command+k,l하면 태그 부분을 접을 수 있음 -->
+  <script>
+    // clientWidth: 사용자 가로폭, 뷰포트 가로폭
+    // innerWidth, innerHeight: 뷰포트 화면 기준
+    // outerWidth, outerHeight: 브라우저 창 기준, 스크롤, 브라우저 기본 세팅의 상단바 크기까지 전체 포함
+    console.log(document.body.clientWidth);
+    // body 식별
+    let body = document.body;
+    console.log(body);
+
+    // 배경색을 불러와줄 부분을 배열에 담아준다
+    let bgColorArr = ['red', 'blue', 'green', 'yellow'];
+
+    // @media(미디어쿼리): 브라우저 창의 뷰포트라는 값을 css에서 쓰게끔 만든 것
+    // === css 알고리즘 안에는 if(){}가 여러개 들어있음을 유추할 수 있다
+
+    // 미디어 쿼리를 직접 if(){}를 사용해 제어가능
+
+    // mobile
+    if(body.clientWidth < 450){
+      // 값을 할당
+      body.style.backgroundColor = bgColorArr[0];
+      // 태블릿
+      // if(){}의 조건식을 추가해주고 싶을 때 else if(){}를 사용해 조건식 추가가 가능
+    } else if(body.clientWidth < 768){
+      body.style.backgroundColor = bgColorArr[1];
+      // PC
+    } else{
+      body.style.backgroundColor = bgColorArr[2];
+    }
+  </script>
+</body>
+</html>
