@@ -77,7 +77,7 @@ function valueTestTwo(){
 // => 데이터를 골라낼 때, 여과기 정수기, 필터, 에러를 미연에 방지한다
 
 
-// 
+// a와 c가 같은 숫자인지를 판별
 if(typeof a === 'number'){
   console.log('a는 숫자');
   if(typeof a === typeof c){
