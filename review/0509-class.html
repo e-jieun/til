@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+<body>
+  <ul>
+    <li></li>
+  </ul>
+  <script>
+    // *만들 알고리즘 -> 클릭하면 나타났다가 사라지는 팝업 화면
+    // ul 식별
+    const ul = document.querySelector('ul');
+    console.log(ul);
+    
+    console.log(ul.children);
+    const li = ul.children[0];
+    console.dir(li);
+
+    // ul에 클릭하면 나타나도록 이벤트를 달아준다
+    ul.addEventListener('click', function(event){
+      // console.log('click 잘 작동');
+      console.log(event); //event를 찍어보고 target을 확인하면 li가 target으로 나온다
+      console.dir(event.target);  //event.target의 구조를 살핀다
+      // .classList 
+      // :DOMTokenList를 반환하는 읽기 전용 프로퍼티, 공백으로 구분된 문자열인 클래스 네임 메서드(클래스 이름을 쓰고 속성에 접근하던 방식)을 통해 엘리먼트의 클래스 목록에 접근하는 방식을 대체해주는 간편한 방법
+      // https://developer.mozilla.org/ko/docs/Web/API/Element/classList
+      
+
+    });
+  </script>
+</body>
+</html>
