@@ -6,22 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-
+    .pop-up{
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+      position: relative;
+      left: 200px;
+    }
   </style>
 </head>
 <body>
   <ul>
-    <li></li>
+    <li>click</li>
   </ul>
   <script>
     // *만들 알고리즘 -> 클릭하면 나타났다가 사라지는 팝업 화면
     // ul 식별
     const ul = document.querySelector('ul');
     console.log(ul);
+    ul.setAttribute('style','width: 100vw; height: 100vh;');
     
     console.log(ul.children);
     const li = ul.children[0];
     console.dir(li);
+    // li.setAttribute('style','width: 0px; height: 0px;');
 
     // ul에 클릭하면 나타나도록 이벤트를 달아준다
     ul.addEventListener('click', function(event){
@@ -31,8 +39,20 @@
       // .classList 
       // :DOMTokenList를 반환하는 읽기 전용 프로퍼티, 공백으로 구분된 문자열인 클래스 네임 메서드(클래스 이름을 쓰고 속성에 접근하던 방식)을 통해 엘리먼트의 클래스 목록에 접근하는 방식을 대체해주는 간편한 방법
       // https://developer.mozilla.org/ko/docs/Web/API/Element/classList
-      
 
+      // event.target.setAttribute('style','width: 100px; height: 100px;');
+
+      // 만약 이벤트 타겟의 프로퍼티인 classList에 pop-up이 포함되어있으면
+      if(event.target.classList.contains('pop-up')){
+        console.log('classList에 pop-up 들어있음');
+        // classList에 .pop-up을 더해줌
+        event.target.classList.remove('pop-up');
+        // 포함되있지 않은 것이 참이면
+      } else{
+        console.log('classList에 pop-up 없음')
+        // classList에 .pop-up을 지워줘
+        event.target.classList.add('pop-up');
+      }
     });
   </script>
 </body>
