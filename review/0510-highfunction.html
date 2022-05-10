@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>click
+    <section>1</section>
+    <section>2</section>
+  </div>
+  <script>
+    // 
+    const item = document.querySelector('div');
+    console.log(item);
+    
+    // 
+    const section = item.children;
+    console.log(section);
+
+    // item에 클릭을 하면 section에 적용 section에 색이 생겨나는 콜백함수를 바깥으로 빼볼 것
+    function sectionFunction(){
+      console.log('function이 잘 작동됩니다');
+    }
+    item.addEventListener('click', sectionFunction);
+  </script>
+</body>
+</html>
