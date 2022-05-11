@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    #root{
+      width: 3000px;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    console.log(window);  //browser
+    // setInterval(), clearInterval()도 있었다 => window의 하위 메서드였다
+    // f라고 쓰여있는 프로퍼티들이 많이 존재 -> 메서드
+
+    const root = document.getElementById('root');
+    console.log(root);
+
+    // let bgColorArr = ['red', 'green', 'blue'];
+    window.addEventListener('wheel', (event) => {
+    // ex1.
+    //   // console.log('wheel');
+    //   console.log(window.document);
+    //   console.log(event.offsetX);
+    //   if(event.offsetX < 1000){
+    //     root.style.background = bgColorArr[0];
+    //     root.style.transition = '5s';
+    //   } else if(event.offsetX < 2000){
+    //     root.style.background = bgColorArr[1];
+    //     root.style.transition = '5s';
+    //   } else{
+    //     root.style.background = bgColorArr[2];
+    //     root.style.transition = '5s';
+    //   }
+
+    // ex2.
+      const docTotalHeightValue = document.body.scrollHeight;
+      // console.log(document.body.scrollWidth); //3000px
+      const currentScrollValue = window.scrollX;  //브라우저에서 가로 스크롤을 얼마나 했나 알려줌, 가로 스크롤값을 알려주는 윈도우의 프로퍼티
+      // console.log(currentScrollValue); 
+      if(currentScrollValue >= 2000){
+        console.log(window.scrollX);  //2661px까지만 나옴, 문서의 가로값과 일치하진 않는다
+      } else if(currentScrollValue > 0){
+        console.log('horizonal scroll started');
+      }
+    });
+
+  </script>
+</body>
+</html>
