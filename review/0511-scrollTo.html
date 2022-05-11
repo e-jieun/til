@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<body>
+  <div id="root">
+    <button>click</button>
+  </div>
+  <script>
+    document.body.setAttribute('style','margin: 0; padding: 0;');
+
+    const root = document.getElementById('root');
+    console.log(root);
+    root.setAttribute('style','width: 100vw; height: 3000px; background: linear-gradient(0deg, #ccc, #333);');
+
+    const clickBtn = root.children[0];
+    console.log(clickBtn);
+    clickBtn.setAttribute('style','width: 50px; height: 50px; position: fixed; bottom: 20px; right: 20px; border-radius: 50px; border: 0px; box-shadow: 2px 2px 2px rgba(0,0,0,0.2);')
+    clickBtn.textContent = 'TOP';
+
+    clickBtn.addEventListener('click', () => {
+      // console.log('click');
+      // 객체로 리턴
+      // window.scroll과 효과적으로 같음
+      // window.scrollTo(0, 0);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // 스크롤 하면 나타나는 top으로 이동하는 버튼
+    clickBtn.style.display = 'none';
+
+    root.addEventListener('wheel', functionDisappear);
+    function functionDisappear(event){
+      console.log(event);
+      if(event.offsetY < 971){
+        clickBtn.style.display = 'none';
+      } else{
+        clickBtn.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
