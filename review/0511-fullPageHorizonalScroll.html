@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <section>1</section>
+    <section>2</section>
+    <section>3</section>
+    <section>4</section>
+    <section>5</section>
+  </div>
+
+  <script>
+    document.body.setAttribute('style','margin: 0; padding: 0;');
+
+    const root = document.querySelector('#root');
+    console.log(root);
+    root.setAttribute('style','height: 100vh; width: 500vw; display: flex;');
+
+    let colorArr = ['#000', '#414141', '#ccc', '#c4c4c4', '#e3e3e3'];
+
+    const section = root.children;
+    console.log(section);
+    for(let i = 0; i<section.length; i++){
+      // !min-width를 꼭 사용해줘야 flex를 사용하더라도 뷰포트에 맞춰 변형이 되지 않음
+      section[i].setAttribute('style','width: 100vw;height: 100vh; border: 1px solid black; min-width: 100vw;');
+      section[i].style.background = colorArr[i];
+    }
+
+    let widthValue = 0;
+    console.dir(section[0].offsetWidth);
+    // !윈도우에 걸어줘야 문서 전체에 적용이 된다
+    window.addEventListener('click', () => {
+      // console.log('click');
+      console.dir(root);
+      console.log(widthValue);
+      // !첫번쩨 클릭에서 transition이 적용되지 않은 이유는 이곳에서 이미 section[0]의 offsetWidth를 더해줘버려서 바로 이동하기 때문이다
+      // To do: 수정해보기
+      widthValue += section[0].offsetWidth;
+      // window.scrollX = widthValue;
+      for(let i = 0; i < section.length; i++){
+        console.log(i);
+          section[i].style.position = 'relative';
+          section[i].style.left = -widthValue+'px';
+          section[i].style.transition = '1s';
+        }
+      // === 
+      // window.scrollTo({
+      //   left: widthValue,
+      //   behavior: 'smooth'
+      // })
+
+      if(widthValue >= root.offsetWidth){
+        console.log(root.offsetWidth);
+        widthValue = 0;
+        window.scroll({
+          left: widthValue,
+          behavior: 'smooth'
+        })
+      }
+    });
+    
+  </script>
+</body>
+</html>
