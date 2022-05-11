@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    #root{
+      width: 100vw;
+      /* !테스트 해보기 */
+      height: 3000px;
+      /* !background!: 그래디언트(각도, 시작값, 끝값); */
+      background: linear-gradient(0deg, #ccc, #333);
+      /* gradient: 값과 값 사이의 중간값을 알아서 계산해 연속적으로 만들어주는
+      linear: 선형
+      처음부터 끝까지 일렬로 간다
+      nonlinear: 비선형  */
+
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    
+  </div>
+  <script>
+    console.log(window);  //browser => 브라우저 전체
+    // setInterval의 본체 => window.setInterval => window의 하위 메서드였다
+    // f라고 쓰여있는 부분 메서드
+
+    const root = document.getElementById('root');
+    console.log(root);
+    
+    // scroll !== wheel
+    window.addEventListener('wheel', (event) => {
+      console.log('스크롤 감지');
+      // console.log(window.document);
+      // window.document.body.textContent = 'lalalala';
+      // console.log(event);
+      // console.log(event.offsetY);
+      // if(event.offsetY < 500){
+        //   // alert('스크롤 너무 많이 내림');
+        //   root.style.background = 'green';
+        //   console.log(root);
+        // } else if(event.offsetY < 1000){
+          //   root.style.background = 'blue';
+          //   console.log(root);
+          // } else if(event.offsetY < 2000){
+            //   root.style.background = 'pink';
+            //   console.log(root);
+            // } else{
+              //   console.log(root);
+              // }
+              
+      const docTotalHeightValue = document.body.scrollHeight;
+      // 전체 높이값이 당장 어딨는지 몰랐지만 -> 검색을 통해 프로퍼티 찾아낼 수 있었다
+      console.dir(document.body.scrollHeight);
+      // 만약 root의 세로축 기준점 값이 문서의 전체 길이의 절반보다 큰 것이 참이면
+      // !window.innerHeight은 왜 959이지? => 브라우저에 보이는 부분만인 것 같다
+      // if(event.offsetY > docTotalHeightValue/2){
+        //   // '절반 넘은 부분'이라고 경고창을 띄워줘
+        //   alert('절반 넘은 부분');
+        // }
+                
+      const currentScrollValue = window.scrollY;
+      if(currentScrollValue > 0){
+        console.log('당신은 방금 스크롤을 굴림');
+        console.log(window.scrollY);
+      }
+      if(window.scrollY >= 2048){        
+        console.log(window.scroll)
+        console.log('yaho!');
+      }
+
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    #root{
+      width: 100vw;
+      height: 500vh;
+      background-color: #ccc;
+    }
+    #root>section{
+      width: 100vw;
+      height: 1vh;
+      background-color: salmon;
+      border: 1px solid black;
+    }
+    #root>aside{
+      width: 50vw;
+      height: 1vh;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+  </div>
+
+  <script>
+    // 스크롤에서 반 이상으로 넘어가면 자식요소를 만든다
+    // 동적 제어
+    // 무한 스크롤은 데이터 끊임없이 덧붙여짐
+    const maker = document.getElementById('root');
+    console.log(maker);
+
+    // 실행되자마자 끝나고 두번 사용할 수 없다
+    // 동적으로 엘리먼트를 만들고싶을 때 이벤트 안에서 추가
+    let article = document.createElement('article');
+    maker.appendChild(article);
+    
+    // 이벤트라는 트리거로 자식요소 생성이 가능
+    let count = 0;
+    maker.addEventListener('wheel', function(){
+      // console.log('hi');
+      console.log('wheel event가 일어나고 있음');
+      let section = document.createElement('section');
+      section.textContent = count;
+      // id가 동적으로 생성
+      // id마저도 작성하는 기계도 작성이 가능하다
+      section.setAttribute('id', `section-${count}`);
+      section.setAttribute('class', `classname-${count}`)
+      maker.appendChild(section);
+      maker.appendChild(article);
+      count++;
+    });
+
+    maker.addEventListener('click', function(){
+      console.log('click event가 일어나고 있음');
+      let aside = document.createElement('aside');
+      aside.textContent = '클릭했다';
+      maker.insertBefore(aside, maker.firstChild);
+      // https://developer.mozilla.org/ko/docs/Web/API/Node/insertBefore
+    });
+
+    // console.log(aside);
+  </script>
+</body>
+</html>

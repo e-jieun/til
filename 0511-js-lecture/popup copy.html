@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      width: 10vh;
+      height: 20vh;
+      background-color: aqua;
+    }
+    section{
+      width: 10vw; 
+      height: 10vw;
+
+    }
+    .none{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <button>A</button>
+  <!-- a버튼을 누르면 popup이 만들어진다 -->
+  <script>
+    const clickBtn = document.querySelector('button');
+    console.log(clickBtn);
+
+    function popUpEvent(target){
+      // clickEvent
+      let clickValue = true;
+      let count = 0;
+      target.addEventListener('click', function(){
+        count++;
+        console.log('click');
+        // 장바구니 기능
+        // 지역변수로 즉석에서 만들어내는 것이 일반적이다
+        let popUp = document.createElement('div');
+        popUp.textContent = `lorem ipsum?`;
+        popUp.setAttribute('class',`popup`);
+        // clickValue가 true일 때
+        if(clickValue === true){
+          console.log('make popUp');
+          // popUp의 스타일 속성을 set 해주고
+          popUp.setAttribute('style', 'width: 30vw; height: 30vw; background-color: #ccc; position: absolute; top: 20vh; left: 20vh;');
+          popUp.setAttribute('textContent', 'lorem');
+          // body의 마지막에 자식요소로 popUp을 덧붙여준다
+          document.body.appendChild(popUp);
+          // 만약 body가 자식 노드를 가지고 있는 것이 true이면
+          // .hasChildNodes()는 return이 boolean type
+          if(document.body.hasChildNodes()){
+            // !자식요소로 덧붙여준 popUp을 식별할 수도 있다
+            const popUp = document.body.children[3];
+            console.log(popUp);
+            // popUp에 클릭 이벤트 핸들러를 달아준다
+            popUp.addEventListener('click', function(){
+              // 클릭을 하면 콘솔에 popup click이란 문자열이 찍히고
+              console.log('popup click');
+              // 클릭을 하면 문서에 closeBtn이라는 변수의 button태그를 만들어 준다
+              // !직접 생긴 팝업을 눌러서 없앨 수는 없을까
+              const closeBtn = document.createElement('button');
+              // closeBtn이라는 버튼 요소의 textContent속성값으로 close라는 문자열을 할당한다
+              closeBtn.textContent = 'close';
+              // popUp의 자식요소로 closeBtn을 덧붙인다
+              popUp.appendChild(closeBtn);
+              // closeBtn에 클릭 이벤트 핸들러를 달아준다
+              closeBtn.addEventListener('click', function(){
+                // closeBtn을 클릭하면 popUp의 display값이 none으로 할당되서 popUp이 나타나지 않도록 해준다
+                popUp.style.display = 'none';  
+              });
+              
+            });
+
+          }
+          clickBtn.textContent = 'X';
+          clickValue = false;
+        } 
+        else{
+          if(document.body.hasChildNodes() === true){
+            console.log('remove');
+            // !자식요소를 다시 클릭을 해서 없애주는 방법을 사용했다
+            // !removeChild()를 달았다
+            // ?직접 생긴 팝업을 눌러서 없앨 수는 없을까
+            document.body.removeChild(document.body.lastChild);
+            clickBtn.textContent = 'A';
+            clickValue = true;
+          }
+        }
+      })
+    
+    }
+    popUpEvent(clickBtn);
+  </script>
+</body>
+</html>

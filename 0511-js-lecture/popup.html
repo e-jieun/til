@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      width: 10vh;
+      height: 20vh;
+      background-color: aqua;
+    }
+    section{
+      width: 10vw; 
+      height: 10vw;
+
+    }
+    .none{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <button>A</button>
+  <!-- a버튼을 누르면 popup이 만들어진다 -->
+  <script>
+    const clickBtn = document.querySelector('button');
+    console.log(clickBtn);
+
+    function popUpEvent(target){
+      // clickEvent
+      let clickValue = true;
+      let count = 0;
+      target.addEventListener('click', function(){
+        count++;
+        console.log('click');
+        // 장바구니 기능
+        // 지역변수로 즉석에서 만들어내는 것이 일반적이다
+        let popUp = document.createElement('div');
+        popUp.textContent = `pop-up-${count}`;
+        popUp.setAttribute('class',`popup`);
+        // 1. try
+        // if(clickValue === true){
+        //   popUp.setAttribute('style','width: 10vh; height: 20vh; background-color: aqua;');
+        //   document.body.appendChild(popUp);
+        //   if(count >= 4){
+          //     popUp.style.background = imageArr[1];
+          //   }
+          //   clickValue = false;
+          //   // clickValue != true;
+          //   // hasChildNodes() => return boolean
+          //   // https://developer.mozilla.org/en-US/docs/Web/API/Node/hasChildNodes
+          // } else if(document.body.hasChildNodes()){
+            //   console.log('off');
+            //   // console.log(popUp);
+            //   document.body.removeChild(document.body.lastChild);
+        //   clickValue = true;
+        // }
+        // 2. try refactoring
+        if(clickValue === true){
+          console.log('make popUp');
+          popUp.setAttribute('style', 'width: 30vw; height: 30vw; background-color: #ccc; position: absolute; top: 20vh; left: 20vh;');
+          document.body.appendChild(popUp);
+          clickBtn.textContent = 'X';
+          clickValue = false;
+          // const popUp = document.querySelector('div');
+          // console.log(popUp);
+        } else{
+          if(document.body.hasChildNodes() === true){
+            console.log('remove');
+            // !자식요소를 다시 클릭을 해서 없애주는 방법을 사용했다
+            // !removeChild()를 달았다
+            // ?직접 생긴 팝업을 눌러서 없앨 수는 없을까
+            document.body.removeChild(document.body.lastChild);
+            clickBtn.textContent = 'A';
+            clickValue = true;
+          }
+        }
+      })
+    
+    }
+    popUpEvent(clickBtn);
+
+    let wheelValue = 0;
+    let imageArr = ['red', 'blue', 'yellow', 'green', 'cyan'];
+    window.addEventListener('wheel', function(){
+      console.log('wheel');
+      let contents = document.createElement('section');
+      contents.setAttribute('style',`width: 10vw; height: 10vw; background: ${imageArr[wheelValue]};`); 
+      document.body.appendChild(contents);
+      wheelValue++;
+      // !값이 같은 경우를 생각해주지 않아서 background의 컬러가 undefined로 나타나는 것이었다
+      if(wheelValue >= imageArr.length){
+        wheelValue = 0;
+      }
+    });
+  </script>
+</body>
+</html>

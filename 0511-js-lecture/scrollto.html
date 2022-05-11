@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    #root{
+      width: 100vw;
+      /* !테스트 해보기 */
+      height: 3000px;
+      /* !background!: 그래디언트(각도, 시작값, 끝값); */
+      background: linear-gradient(0deg, #ccc, #333);
+      /* gradient: 값과 값 사이의 중간값을 알아서 계산해 연속적으로 만들어주는
+      linear: 선형
+      처음부터 끝까지 일렬로 간다
+      nonlinear: 비선형  */
+    }
+
+    .none{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <button>click</button>
+  </div>
+  <script>
+    // root 식별
+    const root = document.querySelector('#root');
+    console.log(root);
+    // button 식별
+    const topBtn = document.querySelector('button');
+    console.log(topBtn);
+    // button position
+    topBtn.setAttribute('style','width: 50px; height: 50px; position: fixed; bottom: 1vh; right: 1vh; border-radius: 50px; border: 0px;');
+    topBtn.textContent = 'TOP';
+    
+    topBtn.addEventListener('click', () => {
+      console.log('click');
+      window.scrollTo({
+        // !객체
+        //         window.scroll({
+        //   top: 100,
+        //   left: 100,
+        //   behavior: 'smooth'
+        // });
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    function mouseMove(target){
+      target.addEventListener('mouseover', event => {
+        console.log('mouse');
+        target.style.background = '#000';
+        target.style.color = '#fff';
+        target.style.transition = '1s';
+      });
+      target.addEventListener('mouseout', event => {
+        target.style.background = '#fff';
+        target.style.color = '#000';
+        target.style.transition = '1s';
+      })
+    }
+    mouseMove(topBtn);
+
+    // console.log(window.innerHeight);
+    // 윈도우의 맨 위라면 top버튼이 사라지고 아니면 top버튼이 생긴다
+    root.addEventListener('wheel', () => {
+      // 윈도우 보이는 창보다 세로 스크롤 값이 큰 것이 참이면
+      if(window.scrollY > window.innerHeight){
+        console.log('mouse moved');
+        // display: none;을 담은 .none을 지운다
+        topBtn.classList.remove('none');
+      } else{
+        console.log('topBtn invisible');
+        // display: none;을 담은 .none을 더해준다
+        topBtn.classList.add('none');
+      }
+    });
+
+    
+
+
+
+    // window.addEventListener('click', (event) => {
+    //   console.log(window.scrollTo({
+    //     // 객체로
+    //     top: 0,
+    //     // scroll값을 100인 곳으로 
+    //     behavior: "smooth"
+    //     // 행동 부드럽게
+    //     // top button
+    //     // auto는 
+    //   }));
+    //   // https://developer.mozilla.org/ko/docs/Web/API/Window/scrollTo
+      
+    // })
+
+  </script>
+
+</body>
+</html>
