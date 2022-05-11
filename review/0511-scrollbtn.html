@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0;}
+    #root{
+      /* height: 100vh; */
+      width: 100vw;
+      display: inline;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <section>contents-1</section>
+    <section>contents-2</section>
+    <section>contents-3</section>
+    <section>contents-4</section>
+    <section>contents-5</section>
+  </div>
+  <script>
+    const root = document.querySelector('#root');
+    console.log(root);
+
+    const section = root.children;
+    console.log(section);
+    for(let i = 0; i < section.length; i++){
+      section[i].style.width = '100vw';
+      section[i].style.height = '100vh';
+      section[i].style.border = '1px solid black';
+    }
+
+    console.log(root.offsetHeight);
+    console.log(section[0].offsetHeight);
+
+    // offsetHeight = 0;부터 시작이 되니까
+    let heightValue = 0;
+    root.addEventListener('wheel', function(){
+      console.log('wheel');
+      heightValue = heightValue+section[0].offsetHeight;
+      console.log(heightValue);
+      window.scrollTo({
+        top: heightValue,
+        behavior: 'smooth'
+      })
+      // offsetHeight가 root.offsetHeight와 같거나 커지면
+      if(heightValue >= root.offsetHeight){
+        heightValue = 0;
+        window.scrollTo({
+        top: heightValue,
+        behavior: 'smooth'
+      })
+      }
+    });
+    
+    
+  </script>
+</body>
+</html>
