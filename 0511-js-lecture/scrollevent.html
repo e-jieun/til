@@ -56,7 +56,7 @@
               
       const docTotalHeightValue = document.body.scrollHeight;
       // 전체 높이값이 당장 어딨는지 몰랐지만 -> 검색을 통해 프로퍼티 찾아낼 수 있었다
-      console.dir(document.body.scrollHeight);
+      console.log(document.body.scrollHeight);
       // 만약 root의 세로축 기준점 값이 문서의 전체 길이의 절반보다 큰 것이 참이면
       // !window.innerHeight은 왜 959이지? => 브라우저에 보이는 부분만인 것 같다
       // if(event.offsetY > docTotalHeightValue/2){
@@ -70,7 +70,7 @@
         console.log(window.scrollY);
       }
       if(window.scrollY >= 2048){        
-        console.log(window.scroll)
+        console.log(window.scrollY);
         console.log('yaho!');
       }
 
