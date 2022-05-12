@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 네개의 메뉴가 있고 특정 메뉴를 클릭했을 때 나머지 메뉴가 안보이게 하기 -->
+  <div id="root">
+    <div class="menu" data-select="0">menu-1</div>
+    <div class="menu" data-select="1">menu-2</div>
+    <div class="menu" data-select="2">menu-3</div>
+    <div class="menu" data-select="3">menu-4</div>
+  </div>
+  <script>
+    const root = document.getElementById('root');
+    console.log(root);
+    root.style.display = 'flex';
+    root.style.justifyContent = 'space-around';
+    // root.style.background = '#c4c4c4';
+    
+    const menu = document.getElementsByClassName('menu');
+    console.log(menu);
+    
+    // 모든 메뉴에 한 메뉴를 클릭할 수 있는 이벤트가 있어야 하고, 그 메뉴를 클릭하면 나머지 메뉴는 사라져야 한다
+    for(let i = 0; i < menu.length; i++){
+      console.log(menu[i].dataset.select);
+      let selectNum = Number(menu[i].dataset);
+      console.log(selectNum);
+
+      // !부모태그에 적용해서 event.target을 사용해주자
+      menu[i].addEventListener('click', ()=>{
+        console.log('click'+i);
+        // 클릭한 부분의 dataset보다 크다거나 작다거나 하면 모두 opacity: 0;이거나 display: none;을 해주면 될 것 같다
+        // 문자열 값이고 == 숫자 값이니까 둘을 같은 것으로 보게 하려면 ===이 아닌 ==을 써주면 된다
+        if(menu[i].dataset.select == i){
+          console.log('클릭한 메뉴');
+          menu[i].style.opacity = 1;
+          if(menu[i].dataset.select === false){
+          console.log('클릭한 메뉴가 아님');
+          menu[i].style.opacity = 0;
+        }
+        }
+      });
+    }
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 네개의 메뉴가 있고 특정 메뉴를 클릭했을 때 나머지 메뉴가 안보이게 하기 -->
+  <div id="root">
+    <div class="menu" data-select="0">menu-1</div>
+    <div class="menu" data-select="1">menu-2</div>
+    <div class="menu" data-select="2">menu-3</div>
+    <div class="menu" data-select="3">menu-4</div>
+  </div>
+  <script>
+    const root = document.getElementById('root');
+    console.log(root);
+    root.style.display = 'flex';
+    root.style.justifyContent = 'space-around';
+    // root.style.background = '#c4c4c4';
+    
+    const menu = document.getElementsByClassName('menu');
+    console.log(menu);
+
+    // !이벤트를 달아줄 때 클릭한 부분만 선택을 하고 싶다면 이벤트 객체를 사용해주는 것이 좋을 것 -> 선택한 것의 나머지도 제어할 수 있다
+    // => 태그 선택
+    root.addEventListener('click', (event)=>{
+      console.log(event.target);  //menu가 event.target
+      console.log(event.target.dataset.select);
+
+      for(let i = 0; i < menu.length; i++){
+        console.log(menu[i].dataset);
+        if(menu[i].dataset.select === event.target.dataset.select){
+          console.log('hi');
+          menu[i].style.opacity = 1;
+        } else{
+          menu[i].style.opacity = 0;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
