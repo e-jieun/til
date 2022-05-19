@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <!--*사용자 정의 함수도 있다 => 캡슐화 || 함수형 프로그래밍 -->
+    <!--*퍼즐처럼 조각내서 사용하는 고차함수 === 어떤 함수(기계)의 부품을 만들어준다 -->
+    <!--*this를 쓰면 함수마저도 찍어낼 수 있다-->
+    <!--*익숙해지면 html이 필요가 없어진다 -> 함수로 시작하고 함수로 끝나거나, 함수로 시작하고 메서드로 끝나기도-->
+  <script>
+    // <!--todo: 함수로 배열 생성기를 하나 만들어주기-->
+
+    // <!--*함수의 알고리즘용으로 함수를 분리해줌-->
+    function add(a, b){
+      return a+b;
+    }
+
+    function arrMakerReturnArr(element){
+      // <!--*지역변수-->
+
+      let arr = [];
+      
+      arr[0] = element;
+      // <!--!higher order function: 안에 부품으로 써줌-->
+      arr[1] = add(1, 2);
+      if(typeof element === 'string'){
+        arr[2] = element.length;  
+      }  //'ahjin'은 문자열
+      // === arr.push(element);
+      // (31) [empty × 30, 'ahjin']
+
+      // <!--*리턴이 배열이다-->
+      return arr;
+    };
+
+    // console.log(typeof(arrMaker('ahjin'))); //object
+    console.log(arrMaker('ahjin')); //object
+    console.log(Array.isArray(arrMaker('ahjin')));  //true
+    // <!--*불리언 타입이 리턴이면 is를 자주 사용함 -->
+  </script>
+</body>
+</html>

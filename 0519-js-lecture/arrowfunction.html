@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!--!this는 화살표 함수를 만나면 해당 요소말고 부모 요소를 찾는다, 고차함수를 쓸 때, 함수를 여러개 겹겹이 쓰기 시작할 때!-->
+  <button id="root"></button>
+  <script>
+    const button = document.getElementById('root');
+    console.log(button);
+    button.textContent = 'click';
+    // <!--*익명함수 방식으로 콜백함수(매개변수 자리에 들어온 함수)를 작성했다-->
+    // <!--!주의점: 콜백함수를 화살표 함수로 작성하고 this를 쓰면 === this는 상위 스코프을 가리킨다-->
+    // target.function(){this} => this는 target을 말함
+    button.addEventListener('click', function () {
+      console.log(this);
+    });
+    button.addEventListener('click', () => {
+      console.log(this);
+    });
+    // function testTwo(a){
+    //   console.log(a); //undefined
+    // }
+    // function testOne(a){
+    //   testTwo();
+    // };
+    // testOne(1);
+    function testOne(a) {
+      function testTwo() {
+        console.log(a); //undefined
+      }
+      testTwo();
+    };
+    testOne(1);
+    // --------------------------------------------------
+    function testOne(a) {
+      const testTwo = () => {
+        console.log(this); //window를 가리킴
+        // <!--!this는 화살표 함수를 만나면 부모 요소를 가리킨다-->
+      }
+      testTwo();
+    };
+    testOne(1);
+  </script>
+</body>
+
+</html>

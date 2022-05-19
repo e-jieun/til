@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- this는 메인 키워드 중 하나
+  너무 유연함, 잘 핸들링하면 요긴해진다
+  this 키워드 -->
+  <!-- !1. this는 말그대로 !이것!을 얘기하기 때문에 this가 가리키는 요소를 꼭 확인해야 한다, this를 사용하면 코드가 압도적으로 줄어든다
+  !실수하는 포인트: this를 확인하지 않고 쓰는 것 -->
+  <button id="root"></button>
+  <h1 id="h1">test</h1>
+  <h2 id="h2">이것은 h2</h2>
+  <script>
+    // dom tree
+    console.log(this);
+    console.log(window);
+    console.dir(this.document);
+    // === console.dir(window.document);
+    // === console.dir(document);
+
+    // this키워드는 콘솔을 자주 찍어주면 해결이 된다
+
+    const root = window.document.querySelector('#root');
+    const h1 = document.getElementById('h1');
+    const h2 = document.getElementById('h2');
+    root.textContent = 'click';
+    // root.addEventListener('click', function(){
+    //   console.log(this);
+    //   this.style.color = 'red';
+    //   this.style.background = 'red';
+    //   root.style.color = 'blue'; //코드가 짧아짐
+    //   // 매번 식별해주기 어려울 때 이벤트도 this에 달 수 있음 
+    // });
+
+  //------------------------------------------------------------------ 
+
+  // 마치 이벤트 객체같다 => 사실은 이벤트 객체에도 this가 들어있다
+    function thisEvent(element, color){
+      element.addEventListener('click', function(){
+        this.style.color = color;
+      });
+      // 함수를 좀 더 유연하게 작성해보자 => 이벤트 두 개를 한번에 묶어서 사용, 한번에 제어하는 함수를 만든 것 
+      // <!--!고차함수의 시작--> 
+      // <!--!this와 함수는 궁합이 잘 맞는다 => 모듈화--> 
+      element.addEventListener('mouseover', function(){
+        this.style.backgroundColor = color;
+      })
+    }
+
+    // function calling
+    // 직접 만든 라이브러리
+    thisEvent(root, 'red');
+    thisEvent(h1, 'blue');
+    thisEvent(h2, 'green');
+    // <!--!this 중급레벨/고급 => 다들 헷갈려한다-->
+    // <!--*1. 전역, 지역 scope를 알아야 하고, 2. BOM/DOM에 대한 것들을 알아야 한다, 3. 함수를 이해해야 제대로 쓸 수 있다(같이 이해해야만 쓸 수 있는 것)-->
+  </script>
+</body>
+</html>
