@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <section class="test">1</section>
+    <section class="test">2</section>
+    <section class="test">3</section>
+    <section class="test" data-name="jieun">4</section>
+    <section class="test">5</section>
+    <article class="test">1</article>
+    <article class="test">2</article>
+    <article class="test" data-name="jieun">3</article>
+    <article class="test">4</article>
+    <article class="test">5</article>
+    <nav class="test">1</nav>
+    <nav class="test" data-name="jieun">2</nav>
+    <nav class="test">3</nav>
+    <nav class="test">4</nav>
+    <nav class="test">5</nav>
+  </div>
+  <script>
+    const root = document.getElementById('root');
+    // 유사배열 => 순서도 있고 길이도 있지만 배열 메서드는 못 쓴다
+    const testOne = document.querySelectorAll('.test');
+    const testTwo = document.getElementsByClassName('test');
+
+    console.dir(root);
+    console.log(testOne);
+    console.log(testTwo);
+    // 사용자 정의 속성은 key 값으로서는
+    // 1. classList <-> !dataset!
+    // 2. 내가 특별하게 따로 관리하고 싶은 특정요소!들!을 표시할 수 있다
+    // class와 dataset은 선택의 자유로 사용하면 되는 부분이다
+
+    console.log(root.classList);
+    // HTML 사용자 정의 속성
+    // data-name(사용할 이름)
+    root.setAttribute('data-name','jieun');
+    root.classList = 'test';
+    console.log(root.dataset['name']);  //type string으로 명시해줘야만 한다
+    console.log(root.dataset.name);
+    console.log(typeof root.dataset.name);  //string
+
+    for(let i = 0; i < testOne.length; i++){
+      if(testOne[i].dataset.name === 'jieun'){
+        console.log(testOne[i].tagName+i)
+        if(testOne[i].classList.contains('test')){
+          testOne[i].style.color = `#ff0000`;
+          testOne[i].style.width = `100px`;
+          testOne[i].style.height = `100px`;
+        }
+      }
+    }
+
+    // dataset은 설정하면 객체로 모아진다(객체로 수집할 수 있다, 포함여부나 이것저것 구분을 시킬 수 있다)
+    // 값이 모두 문자열 => 문자열을 숫자로 바꾸는 방법 -> 형변환 Number(), parseInt()
+    // dataset이 문자열 0이라면 숫자 0으로 바꿔서 인덱스로 바꿀 수 있는지 적용해볼 수 있을 것
+  </script>
+</body>
+</html>

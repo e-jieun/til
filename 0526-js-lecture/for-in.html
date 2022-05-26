@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const root = document.getElementById('root');
+    console.log(typeof root); //object => for(in)을 사용할 수 있다
+
+    // todo: 키값 하나를 문서에 출력한다
+    // root.textContent = root.tagName;
+    // let propsArr = [];
+    // for(let properties in root){
+    //   console.log(properties);
+    //   propsArr.push(properties);
+    //   console.log(propsArr);
+    //   root.textContent = propsArr;
+    // }
+
+    for(let properties in root){
+      const p = document.createElement('p');
+      p.textContent = properties;
+      root.appendChild(p);
+      // <!--todo: 짝수번째의 p태그에 효과를 주기 -->
+      // 인덱스를 뽑아서 짝수번째의 나머지가 %2 === 0
+    }
+    const props = document.getElementsByTagName('p');
+    console.log(props);
+    const key = Array.from(props);
+    console.log(key);
+    key.forEach(function(element, index){
+      element.addEventListener('click',(event)=>{
+        console.log(event.target);
+        // <!--todo: 클릭하면 사라지는 효과를 주는 이벤트 => 이벤트 타겟의 opacity를 0으로 조절하자-->
+        event.target.style.opacity = 0;
+        event.target.style.transition = '1s';
+        console.log(window);
+      })
+      if(index%2 === 0){
+        element.style.color = 'red';
+        element.style.display = 'flex';
+        element.style.justifyContent = 'center';
+      } else if(index > 100){
+        element.style.fontSize = '2rem';
+      } else{
+        element.style.display = 'flex';
+        element.style.justifyContent = 'flex-end';
+      }
+    })
+
+
+  </script>
+</body>
+</html>
