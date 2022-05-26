@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+
+    }
+
+    #root {
+      width: 100vw;
+      height: 100vh;
+      /* background-color: #333; */
+      color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- mousemove는 아직 지원 안함 -->
+  <div id="root">
+    <h1>1</h1>
+    <h1>2</h1>
+  </div>
+
+  <script>
+    const root = document.getElementById('root');
+    console.dir(root);
+
+    // rgb 값에 들어가는 값 정수값
+    // rgb 값의 특성 rgb(rrr, ggg, bbb);
+    // 모두 정수 0-255까지
+    // 0: 검정, 255: 흰색
+    // 0은 0%, 255는 100%라면 
+
+    // let bgColorValue = 100;
+    // let bgColor = `rgb(${bgColorValue}, ${bgColorValue}, ${bgColorValue})`;
+
+    // root.style.backgroundColor = bgColor;
+    // ?  1. 전체값에서 일부값 퍼센트 구하기 : 일부값 / 전체값 * 100
+    function percentOne(total, value) {
+      let result = (value / total) * 100;
+      console.log(`전체값 ${total}에서 ${value}만큼의 값은 : ${result}% 입니다.`);
+      return result;
+    }
+    console.log(percentOne(200, 20));
+    // // 1. 255의 35%는 얼마인가?
+    // ? 2. 전체값에서 몇 퍼센트는 얼마인지 구하기 : 전체값 * 퍼센트 / 100
+    function percentTwo(total, percent) {
+      let setResult = Math.round((total * percent) / 100);
+      let result = (total * percent) / 100;
+      console.log(`전체값 ${total}에서 ${percent}%의 값은 : ${setResult}입니다.`);
+      return result;
+    }
+    //   console.log(Math.round(percentTwo(255, 35)));
+    // root.addEventListener('mousemove', (event) => {
+    //   // console.log(event.offsetX);
+    //   console.log(event.offsetY);
+    //   // h1.textContent
+    //   root.children[0].textContent = event.offsetX;
+    //   root.children[1].textContent = event.offsetY;
+    //   // offsetX
+    //   // offsetY
+    // });
+
+    // 2. 마우스 위치값에 맞춰서
+    // 2-1. 브라우저의 윗방향이 0%, 맨 아래 100% -> 퍼센트로 만들 수 있는지 => 화면 창의 전체값(offsetHeight)을 가져와야 한다
+    let totalHeight = root.offsetHeight;
+    // 브라우저 높이값의 절반에 해당하는 px은 얼마인가?
+    // 전체값에 50%를 넣으면 얼마가 나올까?
+    console.log(percentTwo(totalHeight, 50));
+    // 1. 전체값에 463px는 몇 퍼센트?
+    console.log(percentOne(totalHeight, 463));
+    // 2. 전체값의 56%는 얼마?
+    console.log(percentTwo(255, 56));
+
+    // 전체값에 얼마 이상이면 색이 변하고, 피드를 생성해주고, 인터랙션을 주는
+
+    // 2-2. 색깔값은 흰색이 255, 검은색이 0 -> 퍼센트로 넣을 수 있을지
+  </script>
+</body>
+
+</html>
