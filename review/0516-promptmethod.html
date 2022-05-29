@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    function typeCheck(getData){
+      if(typeof getData === 'string'){
+        console.dir(window.prompt);
+        // console.log(getData);
+        console.log(`입력하신 데이터 ${getData}는 문자열입니다`);
+        // ? 태그 같은 건 계속해서 저장을 해줘야 하는데 어떻게 하지?
+        // !append할 요소의 textContent에 계속해서 만들어서 넣어주면 되지 않을까?
+        // ?계속해서 만들어 줄 수 있도록 반복문 만들어줘야 하지 않을까?
+        const createTag = document.createElement('div');
+        createTag.textContent = `${getData}`;
+        root.appendChild(createTag);
+      } else{
+        console.log(`문자열로만 입력이 가능합니다, 다시 입력해주세요`);
+      }
+    }
+
+    const root = document.getElementById('root');
+    const getPromptData = window.prompt('드라마와 어울리는 태그를 입력해주세요');
+    
+    typeCheck(getPromptData);
+  </script>
+</body>
+</html>
