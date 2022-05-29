@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <nav id="root">
+    <button id="x">
+      <div>x1</div>
+      <div>x2</div>
+    </button>
+    <ul id="menu-con">
+      <li class="menu">menu-1</li>
+      <li class="menu">menu-2</li>
+      <li class="menu">menu-3</li>
+      <li class="menu">menu-4</li>
+      <li class="menu">menu-5</li>
+      <li class="menu">menu-6</li>
+    </ul>
+  </nav>
+  <script>
+    // variable declaration
+    let hun = 100;
+
+    // function
+    // setDisplay
+    const setDisplay = (elem, display, align = null, justify = null, direction = null) => {
+      elem.style.display = display;
+      elem.style.alignItems = align;
+      elem.style.justifyContent = justify;
+      elem.style.flexDirection = direction;
+    }
+    // setSize
+    const setSize = (elem, width, height) => {
+      elem.style.width = width;
+      elem.style.height = height;
+    }
+
+    // setPosition
+    const setPosition = (elem, position, top, bottom, left, right) => {
+      elem.style.position = position;
+      elem.style.top = top;
+      elem.style.bottom = bottom;
+      elem.style.left = left;
+      elem.style.right = right;
+    }
+
+    const root = document.getElementById('root');
+    const button = document.getElementById('x');
+    const menuCon = document.querySelector('#menu-con');
+    const menuItem = document.getElementsByClassName('menu');
+    console.log(root);
+    console.log(button);
+    console.log(menuCon);
+    console.log(menuItem);
+
+    // root style
+    setDisplay(root, 'flex');
+    setSize(root, `${hun/2}vw`, `${hun}vh`);
+    root.style.background = `#c4c4c4`;
+
+    // menuCon style
+    setSize(menuCon, ``, `inherit`);
+    setDisplay(menuCon, `grid`);
+
+    // x style
+    // button을 x로 만들어주기
+    console.log(button.children)
+    const buttonItem = button.children;
+    for (let i = 0; i < buttonItem.length; i++) {
+      setSize(buttonItem[i], `${hun/10}px`, `${hun/hun}px`);
+      buttonItem[i].style.background = `#414141`;
+      buttonItem[i].textContent = ``;
+      // 아래로 45도인 버튼아이템[1]
+      if (i === 0) {
+        buttonItem[i].style.transform = `rotate(45deg)`;
+
+        // 위로 45도인 버튼아이템[2]
+      } else if (i === 1) {
+        buttonItem[i].style.transform = `rotate(-45deg)`;
+        buttonItem[i].style.position = `relative`;
+      }
+    }
+
+    let current = true;
+    // 1. 클릭을 하면 => 클릭 이벤트, 이벤트 타겟
+    button.addEventListener('click', (event) => {
+      console.log(`click`);
+      console.log(event.target);
+      
+      // 2. 메뉴가 사라진다 => 접었다 폈다 해줄 수 있는 변수가 필요, display: none;
+      if (current === true) {
+        console.log(menuCon);
+        menuCon.style.display = `none`;
+        setSize(root, `${hun/5}vw`, `${hun}vh`);
+        root.style.transition = `1s`;
+        current = false;
+        // 3. 클릭을 하면 버튼이 동그라미가 된다 => button의 첫번째 자식요소를 동그라미로 바꿔주고, 마지막 자식요소를 지워주면 될 것 같다
+        button.removeChild(button.lastElementChild);
+        setSize(button.firstElementChild, `${hun/30}vw`, `${hun/30}vw`);
+        button.firstElementChild.style.borderRadius = `${hun/2}%`;
+      } else {
+        // ?메뉴 컨테이너가 커지기도 전에 메뉴가 나타나는 문제점
+        setSize(root, `${hun/2}vw`, `${hun}vh`);
+        if(root.style.width >= `${hun/2}vw`){
+          menuCon.style.display = `block`;
+          setSize(menuCon, ``, `inherit`);
+          setDisplay(menuCon, `grid`);
+        }
+
+        current = true;
+        // 4. 아닌 경우에 x로 다시 만들어줄 수 있어야 한다
+        // 원래 남아있는 자식요소를 다시 x로 만들어주기 위해 스타일링
+        setSize(button.firstElementChild
+        , `${hun/10}px`, `${hun/hun}px`);
+        button.firstElementChild.style.background = `#414141`;
+        // 4-1. 자식요소를 하나 더 만들어 준다
+        const makeX = document.createElement('div');
+        setSize(makeX, `${hun/10}px`, `${hun/hun}px`);
+        makeX.style.background = `#414141`;
+        makeX.style.transform = `rotate(-45deg)`;
+        button.firstElementChild.after(makeX);
+        // 4-2. 스타일링을 다시 x로 해준다
+        console.log(button);
+      }
+    });
+  </script>
+</body>
+
+</html>
