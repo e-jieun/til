@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #root>h1:nth-child(1):hover{
+            transform: perspective(100px) rotateX(10deg) rotateY(-10deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h1></h1>
+        <h1></h1>
+    </div>
+    <script>
+        const root = document.getElementById('root');
+        const h1 = document.getElementsByTagName('h1');
+        console.log(root);
+        console.log(h1);
+
+        // root style
+        root.setAttribute('style',`width: 100vw; height: 100vh; background: #333; color: #ccc;`);
+        // h1 style
+        h1.setAttribute('style',`width: 200px; height: 200px; background-color: #fff; transition: 1s; border-radius: 20px;`);
+        root.addEventListener('mousemove', (event)=>{
+            console.log(event.offsetX);
+            console.log(event.offsetY);
+        });
+    </script>
+</body>
+</html>
