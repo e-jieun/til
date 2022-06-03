@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #root{
+      width: 100vw;
+      height: 100vh;
+      background-color: #333;
+      color: #ccc;
+    }
+    #root>h1{
+      width: 200px;
+      height: 200px;
+      background-color: #fff;
+      transition: 1s;
+      border-radius: 20px;
+    }
+    #root>h1:first-child:hover{
+      transform: perspective(100px) rotateX(10deg) rotateY(-10deg);
+      /* perspective attribute
+        투시도법, 원근법
+보는 사물은 멀리서 볼수록 작아지는 것과 더불어 이상한 형태로 기울어지는 특징이 있다 => 투시도법, 원근법 = 형태가 왜곡되는 현상
+모두 일련의 숫자값으로 새겨져있다 === 숫자이니까 원하는 만큼 변경(제어)할 수 있음
+       */
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <h1>1</h1>
+    <h1>2</h1>
+  </div>
+  <script>
+    const root = document.getElementById('root');
+    console.log(root);
+
+    root.addEventListener('mousemove', event => {
+      console.log(event.offsetX);
+      console.log(event.offsetY);
+      // mousemove type
+      // 마우스 무브 이벤트
+// 브라우저 위에서 움직임 있을 때 매순간 발생 === 이벤트가 발생하는 횟수가 마우스를 움직이는 픽셀 수만큼 발생한다
+// 마우스 무브의 이벤트 객체 => !마우스 포인터 좌표!를 키로 가짐 => offsetX(offset으로부터 가로 위치), offsetY(offsetY으로부터 세로 위치)
+// -> 마우스 조작 조차도 사용자와의 인터랙션, 사용자에게는 클릭, 휠, 키보드만 !입력, 제작자에겐 !브라우저 연 상태부터 인터랙션의 시작점
+    })
+  </script>
+</body>
+</html>
