@@ -2,8 +2,8 @@
 function returnPercent(value,total){
   let result = (total/value)*100;
   return result;
-  console.log(result);
 }
+console.log(returnPercent(20, 100));
 
 // return value by percent
 function returValue(total, percent){
@@ -12,3 +12,8 @@ function returValue(total, percent){
   console.log(result);
 }
 
+// number add n percent -> number*(1+percent/100);
+function numberAddPer(value, percent){
+  let result = number*(1+percent/100);
+  return result;
+}
