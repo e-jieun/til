@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    section{
+      width: 100vw;
+      height: 100vh;
+      border: 1px solid red;
+    }
+    #menu{
+      position: fixed;
+      top: 0;
+      right: 0;
+    }
+    html{
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <!-- 외부링크 http://, ftp:// -->
+  <ul id="menu">
+    <!-- 이 부분 #num-1로 url에 새겨진다 -->
+    <li><a href="#num-1">num-1</a></li>
+    <li><a href="#num-2">num-2</a></li>
+    <li><a href="#num-3">num-3</a></li>
+    <li><a href="#num-4">num-4</a></li>
+    <li><a href="#num-5">num-5</a></li>
+    <li><a href="#num-6">num-6</a></li>
+    <li><a href="#num-7">num-7</a></li>
+    <li><a href="#num-8">num-8</a></li>
+    <li><a href="#num-9">num-9</a></li>
+    <li><a href="#num-10">num-10</a></li>
+  </ul>
+  <section id="num-1"></section>
+  <section id="num-2"></section>
+  <section id="num-3"></section>
+  <section id="num-4"></section>
+  <section id="num-5"></section>
+  <section id="num-6"></section>
+  <section id="num-7"></section>
+  <section id="num-8"></section>
+  <section id="num-9"></section>
+  <section id="num-10"></section>
+  
+  <script>
+    
+    window.addEventListener('hashchange', function(){
+      const urlTest = window.location.href;
+      const hashTest = window.location.hash;  // 아이디 값을 가져와줌
+      console.log('href: '+urlTest);  // 링크를 가져옴
+      console.log('hash: '
+      +hashTest.substring(1)); 
+      // !.substring(): 문자열 메서드 중 하나!
+      // id값만 나와준다
+      // hash: 자료구조를 짜는 인덱스, 색인의 데이터 중 하나
+      // id가 바뀌어도 제어가 가능하다
+      // !해당 아이디가 아닌 다른 상태라면 지워달라!
+      
+      // SPA의 특징 -> 한 페이지에 숨겨놓는다, 내부 링크를 통해서 파일을 두번 줘야함
+      // 선택한 놈 나머지를 제어하는 것 -> display: none;으로 한 것처럼 => 사람들은 페이지가 바뀐 것처럼 생각을 한다
+
+      // innerHTML과 위의 방식이 합쳐지면 좋을 것
+
+      // 다수의 html파일이 유기적 !이동!(다시 로딩) -> 안정적
+      // 1. 백엔드가 잘라 붙여줘야함
+      // 2. 혹시 모든 문서를 자바스크립트가 !제작!하는 방식을 취하면 선택한 놈 말고 빼면 그만 => 이벤트 타겟이 아니라 hash로 하면 된다, 싱글 페이지인데 필요한만큼 전환이 가능해진다
+      // 단점 -> 마크업보단 제어로 하는 경우가 많음 => 프로그래밍/hash를 사용
+      
+      // 라우팅을 이용해 만든다
+      // module이 빛을 발휘한다 -> 페이지네이션 = routing/route 클라이언트에게 다 시켜버린다(클라이언트 사이드)
+
+      // BOM
+      // 1. window => dom, bom -> location(통신 관련): 구별용으로 쓰기는 괜찮다
+      
+      console.dir(window.location);
+
+      // 변수를 동적으로 만든다?, 동적으로 식별은 가능하다!(만들어진 것은 뭐든 가능하다)
+
+      // offsetHeight 등을 이용해서 scrollTo 등을 이용해서 강제로 스크롤 인터랙션을 주지 않아도 됨
+    })
+  </script>
+</body>
+</html>
