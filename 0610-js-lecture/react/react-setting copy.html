@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- react -->
+  <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+  <!-- babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <!-- react -->
+  <!-- module을 사용하고 싶으면 data-type -->
+  <!-- module은 빠져도 babel은 빠지면 안됨 -->
+  <script type="text/babel" data-type="">
+    const root = document.getElementById('root');
+    const coffee = 'americano';
+    // 첫글자 대문자
+    function Section(){
+      // return에 소괄호
+      // 이것이 component
+      return (
+        <ul>
+          <li>{coffee}</li>
+          <li>{coffee}</li>
+          <li>{coffee}</li>
+        </ul>
+      );
+    }
+    // 백틱 사이에 마크업할 준비 => 백틱을 안쓰면 해결이 됨
+    // innerHTML에 변수 적용하는 것처럼
+    // <Section/> 리액트 문법
+    const test = 
+      <section>
+        <Section/>
+      </section>
+    ;
+    // react의 메서드, 코어 메서드 아님
+    // 
+    ReactDOM.render(test, root);
+
+  </script>
+</body>
+
+</html>
