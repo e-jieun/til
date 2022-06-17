@@ -1,4 +1,5 @@
 import randomNum from "./0617-dice-project.js";
+import randomRgb from "./0617-number.js";
 
 function makeElem(number, elem, contents = ''){
   let string = '';
@@ -25,13 +26,16 @@ console.log(root);
 root.addEventListener('click', function(){
   this.innerHTML = makeElem(randomNum(1, 6), 'div', randomNum('',6));
   console.log(root);
-
 })
+root.style.display = 'flex';
+root.style.columnGap = '2vw';
 
 // todo: 나타나도록 css 설정해주기 => 우선 그냥 숫자만 나타내줬다
 const rootChild = Array.from(root.children);
 setSize(root, '100vw', '100vh');
-root.style.display = 'flex';
-root.style.columnGap = '2vw';
+// todo: 색을 적용시킬 수 있는 부분 각각의 자식요소에
+rootChild.forEach((elem) => {
+  randomRgb(elem);
+});
 
 

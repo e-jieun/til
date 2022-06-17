@@ -10,7 +10,7 @@
 // !(Math.random() * (max-min))+min: min-max의 숫자가 랜덤으로 나옴
 // console.log(Math.round(Math.random()*6));
 const randomNum = (min = 0, max) => {
-  return Math.round(Math.random()*(max-min)+min);
+  return Math.floor(Math.random()*(max-min)+min);
 }
 
 // todo: 두 수 1, 6 사이의 랜덤 숫자 
