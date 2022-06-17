@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .border-bk{
+      border: 1px solid #000;
+    }
+    #root{
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      align-items: center;
+      justify-content: center;
+    }
+    #wrapper{
+      width: 50vw;
+      height: 50vh;
+    }
+    #ball{
+      width: 50px;
+      height: 50px;
+      background-color: #ccc;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <div id="wrapper">
+      <div id="ball"></div>
+    </div>
+    <button>motion</button>
+  </div>
+
+  <script>
+    const root = document.getElementById('root');
+    console.log(root);
+
+    const moveCon = document.getElementById('wrapper');
+    console.log(moveCon);
+
+    moveCon.classList.add('border-bk');
+
+    const ball = document.getElementById('ball');
+    console.log(ball);
+    // ball 요소를 제어하기 위해서 포지션 부분을 JS에서 제어
+    ball.setAttribute('style', 'position: absolute;');
+    ball.style.top = 0;
+    ball.style.left = 0;
+
+    const click = document.querySelector('button');
+    console.log(click);
+
+  </script>
+</body>
+</html>
