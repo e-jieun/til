@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- *DOM API에서 지원하는 함수들을 활용한 방식 -->
+  <!-- *node에선 안 돌아간다 -> 코어함수는 아니다 => setAttribute(), appendChild() -->
+  <!-- <div id="root"></div> -->
+  <script>
+    // const a = document.getElementById('root');
+    // console.log(a);
+    // console.dir(a);
+    // DOM API => 생성자 함수에서 인스턴스로 뽑아져 나온 객체
+    // 꺽쇠를 써서 HTML에 약속된 문자열을 작성하면 객체를 만들어줘
+    // 객체 복제된 인스턴스 -> 라면, 붕어빵
+    // 수많은 객체 키들은 어떤 붕어빵 틀(생성자 함수)에서 찍어져 나온 것
+
+    console.log(document.body);
+    console.dir(document.body); //감춰져있을 뿐 만드는 객체랑 다를 바 없다.
+
+    // todo: 동적으로 요소를 만들기
+    // 요소를 만든다(createElement), 새긴다(글씨를 새긴다), 요소를 붙인다(만든 놈에 뭘 새긴 걸 덧붙인다)
+
+    const root = document.createElement('div');
+    root.id = 'root';
+    const ul = document.createElement('ul');
+    const li = document.createElement('li');
+
+    // document.body.appendChild(document.createElement('div'));
+    document.body.appendChild(root);
+    // const root = document.getElementById('root');
+    root.appendChild(ul);
+    ul.appendChild(li);
+
+    // root.appendChild(ul);
+
+    // !새겨놓은 것을 꺼내쓰는 것 vs. 새길 것을 만들어서 붙이는 것
+    // !=> static(정적) vs. dynamic(동적)
+
+    // todo: li 태그를 여러번 반복할래
+    // for (let i = 0; i < 1000; i++) {
+    //   const li = document.createElement('li');
+    //   ul.appendChild(li);
+    // }
+
+    const arr = [`img-1.svg`];
+    let timer = setTimeout(() => {
+      for (let i = 0; i < 1000/2; i++) {
+        const li = document.createElement('li');
+        const img = document.createElement('img');
+        // img.src = arr[i];
+        img.setAttribute('src',`svg/${arr[i]}`);
+        // 이미지 폴더 만들건데, 거기에 있는 모든 파일을 배열에 넣어줄래?
+        ul.appendChild(li);
+        li.appendChild(img);
+      }
+    }, 5000); // setTimeout 웹은 유일하게 js만 허용
+    // ul.innerHTML = '';
+
+  </script>
+</body>
+
+</html>
