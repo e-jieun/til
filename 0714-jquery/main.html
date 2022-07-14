@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- jQuery cdn -->
+  <!-- https://developers.google.com/speed/libraries#jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- 전체 코드를 한번 읽고 시작 -->
+  <!-- 최적화에는 성능의 문제 있다 -->
+  <style>
+    .a{
+      background-color: salmon;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper"></div>
+
+  <script>
+    // 라이브러리 === 미리 써둔 코드 === vanilla와 섞어서 사용해도 된다
+    // const wrapper = document.getElementById('wrapper');
+    // console.log(wrapper);
+
+    // 한번밖에 사용할 수 없음 === document.querySelector()
+    // 로드를 해야만 쓸 수 있는 방식
+    // const wrap = $("#wrapper"); //<!--?식별하는 방식-->
+    // console.log($("#wrapper"));
+    $("#wrapper").css('width', '100px');
+    $("#wrapper").css('height', '100px');
+    $("#wrapper").css('background-color', 'blue');
+    
+    //param => callback func
+    $("#wrapper").click(function(){
+      $("#wrapper").addClass("a");
+      $("#wrapper").text("background");
+    });
+
+    // <!--?생산성?-->
+
+    // // <!--*실무에서 요구하는 함수-->
+    // function style(element, key, value){
+    //   // key값을 정할 수 없어 대괄호 표기법 사용
+    //   element.style[`${key}`] = `${value}`;
+    // }
+
+    
+  </script>
+</body>
+
+</html>
