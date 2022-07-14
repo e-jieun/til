@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+#root > div {
+  width: inherit;
+  height: inherit;
+  border: 1px solid #000;
+  position: absolute;
+}
+#root > div:first-child > img {
+  width: 100vmax;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#root > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  mix-blend-mode: overlay;
+}
+#root > div:last-child {
+  background-image: url("./Whiplash-2.jpg");
+  background-size: cover;
+}/*# sourceMappingURL=style.css.map */

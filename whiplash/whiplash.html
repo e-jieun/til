@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+    <div>
+      <img src="./image-1.png" alt="actor">
+    </div>
+    <div>
+      <h1>WHIPLASH</h1>
+    </div>
+    <div>3</div>
+  </div>
+  <script>
+    const root = document.getElementById('root');
+    const actorCon = root.firstElementChild;
+    const textCon = actorCon.nextElementSibling;
+    const rootChild = Array.from(root.children);
+    console.log(root);
+    console.log(actorCon);
+    console.log(textCon);
+    let zIndexValue = 4;
+    rootChild.map(elem => {
+      zIndexValue--;
+      elem.style.zIndex = zIndexValue;
+      console.log(elem);
+    })
+    
+    // 클릭하면 1, 2번이 위치가 바뀜
+    let actorZIndex = actorCon.style.zIndex;
+
+    root.addEventListener('click', function (e) {
+      console.log(e.target.tagName);
+      console.log('click');
+      if (e.target.tagName === 'IMG') {
+        actorZIndex++;
+        textCon.style.zIndex = actorZIndex;
+        console.log(textCon.style.zIndex);
+
+        textCon.style.color = '#fff';
+        textCon.style.mixBlendMode = 'lighten';
+        textCon.style.transition = '1s';
+      }
+    })
+  </script>
+</body>
+
+</html>
