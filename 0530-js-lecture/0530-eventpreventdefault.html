@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>horizonal scroll page example</title>
 </head>
+
 <body>
   <div id="root"></div>
   <script>
@@ -16,7 +18,7 @@
     const root = document.getElementById('root');
     // root style
     // <!--todo: 가로 300vw, 세로 100vh로 크기를 설정해준다
-    root.setAttribute(`style`,`width: 300vw; height: 100vh; background-color: #ccc; border-right: 5px solid #000;`);
+    root.setAttribute(`style`, `width: 300vw; height: 100vh; background-color: #ccc; border-right: 5px solid #000;`);
     console.dir(root);
 
     // root에 이벤트 객체를 이용한 휠 이벤트를 생성해주기
@@ -41,24 +43,29 @@
       console.log(beforeValue);
       //<!--* pageXOffset, pageYOffset === scrollX, scrollY
       // 문서가 수평으로 얼마나 스크롤 됐는지 픽셀 단위로 반환한다
-      console.log(window.pageXOffset);  
+      // console.log(window.pageXOffset);
 
       //<!--* scrollBy(x, y): 
       //<!--* scrollTo: 절대적인 스크롤 값을 제어하는 메서드
       //<!--* scrollBy: 상대적인 스크롤 값을 제어하는 메서드
       window.scrollBy(getY, 0);
-      
+
       //<!--* 스크롤 이벤트가 작동하고 나서의 값을 담아준 변수
       let nextValue = window.pageXOffset;
+      console.log(nextValue);
 
-      if(beforeValue < nextValue){
+      if (beforeValue < nextValue) {
         //<!--* 스크롤 이벤트가 작동할 때 콘솔에 기록되는 부분
         console.log('scroll value working');
-      } else{
+      } else if (beforeValue === nextValue) {
+        console.log('스크롤이 어떻게 동작하고 있는지 확인하자');
+      } else {
         //<!--* 기존의 정해진 화면값에 도달하면 콘솔에 기록되는 부분
         console.log('scroll value doesn\'t work');
       }
+
     });
   </script>
 </body>
+
 </html>
