@@ -39,21 +39,30 @@
  */
 // *async, wait === new Promise()
 function funcA(){
-  return setTimeout(() => {
-    console.log('first');
-  }, 2000);
+  // return setTimeout(() => {
+    // console.log('first');
+    return 1;
+  // }, 2000);
 }
 function funcB(){
-  return setTimeout(() => {
-    console.log('second');
-  }, 1000);
+  // return setTimeout(() => {
+    // console.log('second');
+    return 2;
+  // }, 1000);
+}
+function funcC(){
+  return 3;
 }
 //? 동기적으로 처리는 되지만 콘솔이 기록되도록 순서를 적어준 부분은 비동기적으로 처리가 됐다
+//! return을 그냥 number 타입으로 간단히 설정하고 테스트했더니 작성한대로 인터프리터 방식으로 읽어들여서 동기적으로 처리가 가능
+//! setTimeout을 함수 자체에 줬어서 함수 선언부에 return을 setTimeout으로 줘서 생긴 이상한 출력
 async function actionFunc(){
   let result;
-  result = await funcA();
+  result = await funcC();
   console.log(result);
   result = await funcB();
+  console.log(result);
+  result = await funcA();
   console.log(result);
 }
 
@@ -63,4 +72,4 @@ async function actionFunc(){
 // test().then(() => {funcB()});
 
 // console.log(test());
-actionFunc();
+console.log(actionFunc());
