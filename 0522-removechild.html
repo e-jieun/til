@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+    <span></span>
+  </div>
+
+  <script>
+    const root = document.getElementById('root');
+    const span = root.firstElementChild;
+    console.log(span);
+
+    // <!--*Node.removeChild(removeChildNode);
+    // <!--*지워줄 자식요소를 매개변수로 넣어주면 된다
+    root.removeChild(span);
+
+    console.log(root.children);
+  </script>
+</body>
+
+</html>
