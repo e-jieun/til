@@ -41,7 +41,10 @@
     for (let i = 0; i < slideArr.length; i++) {
       rootChild = document.createElement('div');
       rootChild.textContent = slideArr[i];
-      root.insertBefore(rootChild);
+      // <!--? parentNode.insertBefore(newNode, referenceNode(참조할 노드, 어느 노드 앞에 넣을지 해당하는 노드));-->
+      // .inserBefore() syntax: var insertedNode = parentNode.insertBefore(newNode, referenceNode);
+      // <!--? https://developer.mozilla.org/ko/docs/Web/API/Node/insertBefore-->
+      root.insertBefore(rootChild, right);
     }
     console.log(rootChild);
     // root.innerHTML = rootChild;
